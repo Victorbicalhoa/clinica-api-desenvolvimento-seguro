@@ -1,0 +1,38 @@
+[
+  {
+    "plugin_id": "10017",
+    "path": "/docs",
+    "before": 1,
+    "after": 0
+  },
+  {
+    "plugin_id": "10031",
+    "path": "/agenda",
+    "before": 1,
+    "after": 1
+  },
+  {
+    "plugin_id": "10038",
+    "path": "/agenda",
+    "before": 1,
+    "after": 0
+  },
+  {
+    "plugin_id": "10038",
+    "path": "/docs",
+    "before": 1,
+    "after": 0
+  },
+  {
+    "plugin_id": "10109",
+    "path": "/docs",
+    "before": 1,
+    "after": 1
+  },
+  {
+    "plugin_id": "90003",
+    "path": "/docs",
+    "before": 2,
+    "after": 0
+  }
+]

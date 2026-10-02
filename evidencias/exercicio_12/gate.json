@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "blocked": [],
+  "warnings": [
+    "ZAP 10038: Medium, impacto moderado revisado",
+    "ZAP 10017: Low",
+    "ZAP 10109: Informational",
+    "ZAP 10038: Medium, impacto moderado revisado",
+    "ZAP 90003: Medium, impacto moderado revisado",
+    "ZAP 90003: Medium, impacto moderado revisado",
+    "ZAP 10031: Informational"
+  ]
+}

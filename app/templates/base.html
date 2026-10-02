@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Agenda clínica{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='/agenda.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-icon" aria-hidden="true">+</span> Agenda clínica</div>
+    <span class="area">Recepção · ambiente de demonstração</span>
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer>Ambiente de demonstração autenticado. Use somente dados fictícios.</footer>
+</body>
+</html>

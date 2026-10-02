@@ -1,0 +1,40 @@
+{
+  "mode": "Replay do SCA historico real sobre demais checks atuais; nao e execucao integral da versao antiga.",
+  "before_multipart_0_0_22": {
+    "passed": false,
+    "blocked": [
+      "SCA python-multipart PYSEC-2026-3038: corrigir/triagem necessaria",
+      "SCA python-multipart PYSEC-2026-3039: corrigir/triagem necessaria",
+      "SCA python-multipart PYSEC-2026-3040: corrigir/triagem necessaria",
+      "SCA python-multipart PYSEC-2026-3036: corrigir/triagem necessaria",
+      "SCA python-multipart PYSEC-2026-3037: corrigir/triagem necessaria",
+      "SCA python-multipart PYSEC-2026-3038: corrigir/triagem necessaria",
+      "SCA python-multipart PYSEC-2026-3037: corrigir/triagem necessaria",
+      "SCA python-multipart PYSEC-2026-3036: corrigir/triagem necessaria",
+      "SCA python-multipart PYSEC-2026-3040: corrigir/triagem necessaria",
+      "SCA python-multipart PYSEC-2026-3039: corrigir/triagem necessaria"
+    ],
+    "warnings": [
+      "ZAP 10038: Medium, impacto moderado revisado",
+      "ZAP 10017: Low",
+      "ZAP 10109: Informational",
+      "ZAP 10038: Medium, impacto moderado revisado",
+      "ZAP 90003: Medium, impacto moderado revisado",
+      "ZAP 90003: Medium, impacto moderado revisado",
+      "ZAP 10031: Informational"
+    ]
+  },
+  "after_multipart_0_0_32": {
+    "passed": true,
+    "blocked": [],
+    "warnings": [
+      "ZAP 10038: Medium, impacto moderado revisado",
+      "ZAP 10017: Low",
+      "ZAP 10109: Informational",
+      "ZAP 10038: Medium, impacto moderado revisado",
+      "ZAP 90003: Medium, impacto moderado revisado",
+      "ZAP 90003: Medium, impacto moderado revisado",
+      "ZAP 10031: Informational"
+    ]
+  }
+}

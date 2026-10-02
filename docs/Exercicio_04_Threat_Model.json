@@ -1,0 +1,1178 @@
+{
+  "model_id": "TM-CLINICA",
+  "version": "1.0",
+  "date": "2026-09-22",
+  "baseline": "Código após Exercício 2 e DFD do Exercício 3; aplicação não alterada no Exercício 4.",
+  "threats": [
+    {
+      "id": "TH-01",
+      "title": "Ausência de identidade confiável",
+      "stride": [
+        "S"
+      ],
+      "components": [
+        "P1",
+        "P2"
+      ],
+      "assets": [
+        "A01",
+        "A04"
+      ],
+      "surfaces": [
+        "AS01",
+        "AS02"
+      ],
+      "flows": [
+        "F01",
+        "F02",
+        "F03",
+        "F04"
+      ],
+      "boundaries": [
+        "TB1"
+      ],
+      "misuse": [
+        "MC-01",
+        "MC-03"
+      ],
+      "controls": [],
+      "mitigations": [
+        "MT-01"
+      ],
+      "verification": [
+        "VT-01"
+      ],
+      "risk": {
+        "likelihood": 3,
+        "impact": 3,
+        "score": 9,
+        "priority": "Crítica"
+      },
+      "status": "Aberta",
+      "scenario": "Cliente alcançável opera como usuário legítimo. Não existe login/JWT: requisito de identidade ausente, não quebra de autenticação existente.",
+      "evidence": "Sondagem do Exercício 3 mostrou operações sem credencial.",
+      "residual": "Autenticar sozinho não resolve TH-02/TH-13."
+    },
+    {
+      "id": "TH-02",
+      "title": "Acesso a recurso alheio / falta de ownership",
+      "stride": [
+        "I",
+        "T"
+      ],
+      "components": [
+        "P1",
+        "P2"
+      ],
+      "assets": [
+        "A01"
+      ],
+      "surfaces": [
+        "AS01",
+        "AS02"
+      ],
+      "flows": [
+        "F01",
+        "F02",
+        "F03",
+        "F04",
+        "F05",
+        "F06"
+      ],
+      "boundaries": [
+        "TB1"
+      ],
+      "misuse": [
+        "MC-01",
+        "MC-03"
+      ],
+      "controls": [
+        "C01",
+        "C02"
+      ],
+      "mitigations": [
+        "MT-02",
+        "MT-01"
+      ],
+      "verification": [
+        "VT-02"
+      ],
+      "risk": {
+        "likelihood": 3,
+        "impact": 3,
+        "score": 9,
+        "priority": "Crítica"
+      },
+      "status": "Aberta",
+      "scenario": "Busca por ID, edição e listas não verificam relação sujeito–recurso. Depois de login, lacuna pode persistir como BOLA/IDOR.",
+      "evidence": "Inspeção: nenhum filtro/dependência de autorização. Contas A/B ainda não existem para provar variante autenticada.",
+      "residual": "Contrato de saída não impede acesso aos campos públicos alheios."
+    },
+    {
+      "id": "TH-03",
+      "title": "Atribuição de auditoria pelo cliente",
+      "stride": [
+        "T"
+      ],
+      "components": [
+        "P1"
+      ],
+      "assets": [
+        "A02"
+      ],
+      "surfaces": [
+        "AS01"
+      ],
+      "flows": [
+        "F01",
+        "F05",
+        "F09"
+      ],
+      "boundaries": [
+        "TB1"
+      ],
+      "misuse": [
+        "MC-02"
+      ],
+      "controls": [
+        "C01",
+        "C02"
+      ],
+      "mitigations": [
+        "MT-04"
+      ],
+      "verification": [
+        "VT-03"
+      ],
+      "risk": {
+        "likelihood": 1,
+        "impact": 2,
+        "score": 2,
+        "priority": "Baixa"
+      },
+      "status": "Controlada no vetor atual",
+      "scenario": "Cliente tenta definir auditoria/campo extra via POST/PUT; entrada recusa propriedades não declaradas.",
+      "evidence": "Testes do Exercício 2 confirmam 422; metadados gerados pelo servidor.",
+      "residual": "Reabrir se novo schema/rota aceitar auditoria; negócio inválido é TH-04."
+    },
+    {
+      "id": "TH-04",
+      "title": "Associação inválida e conflito de agenda",
+      "stride": [
+        "T"
+      ],
+      "components": [
+        "P1",
+        "P3",
+        "D1"
+      ],
+      "assets": [
+        "A01",
+        "A04"
+      ],
+      "surfaces": [
+        "AS01",
+        "AS03"
+      ],
+      "flows": [
+        "F01",
+        "F05",
+        "F09"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB2"
+      ],
+      "misuse": [
+        "MC-02"
+      ],
+      "controls": [
+        "C02",
+        "C03"
+      ],
+      "mitigations": [
+        "MT-05"
+      ],
+      "verification": [
+        "VT-04"
+      ],
+      "risk": {
+        "likelihood": 3,
+        "impact": 2,
+        "score": 6,
+        "priority": "Alta"
+      },
+      "status": "Aberta",
+      "scenario": "IDs positivos inexistentes e gravações concorrentes de horários conflitantes podem passar pela validação sintática.",
+      "evidence": "Não há FK/regra de conflito; concorrência não foi exercitada como prova de ataque.",
+      "residual": "Regra exata depende do negócio; checagem sem atomicidade pode falhar em corrida."
+    },
+    {
+      "id": "TH-05",
+      "title": "Negação de autoria sem trilha",
+      "stride": [
+        "R"
+      ],
+      "components": [
+        "P1",
+        "P2",
+        "P3",
+        "D1"
+      ],
+      "assets": [
+        "A01",
+        "A02"
+      ],
+      "surfaces": [
+        "AS01",
+        "AS02",
+        "AS03"
+      ],
+      "flows": [
+        "F01",
+        "F03",
+        "F05",
+        "F07",
+        "F09"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB2"
+      ],
+      "misuse": [
+        "MC-06"
+      ],
+      "controls": [],
+      "mitigations": [
+        "MT-06",
+        "MT-01"
+      ],
+      "verification": [
+        "VT-05"
+      ],
+      "risk": {
+        "likelihood": 3,
+        "impact": 2,
+        "score": 6,
+        "priority": "Alta"
+      },
+      "status": "Aberta",
+      "scenario": "Ator nega leitura/alteração/exclusão sem identidade e histórico por ação.",
+      "evidence": "criado_em/UUID são criação; DELETE remove registro. Sem auditoria de negócio.",
+      "residual": "Access log/UUID não provam autoria; proteger também dados dos eventos."
+    },
+    {
+      "id": "TH-06",
+      "title": "Exposição de propriedades internas",
+      "stride": [
+        "I"
+      ],
+      "components": [
+        "P1",
+        "P2"
+      ],
+      "assets": [
+        "A01",
+        "A02"
+      ],
+      "surfaces": [
+        "AS01",
+        "AS02",
+        "AS05"
+      ],
+      "flows": [
+        "F02",
+        "F04",
+        "F06",
+        "F08"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB3"
+      ],
+      "misuse": [
+        "MC-03"
+      ],
+      "controls": [
+        "C01",
+        "C06"
+      ],
+      "mitigations": [
+        "MT-04"
+      ],
+      "verification": [
+        "VT-06"
+      ],
+      "risk": {
+        "likelihood": 1,
+        "impact": 2,
+        "score": 2,
+        "priority": "Baixa"
+      },
+      "status": "Controlada no vetor atual",
+      "scenario": "Serializar ORM completo futuramente poderia expor auditoria; hoje ConsultaRead/projeção a omitem.",
+      "evidence": "Testes de campos/contexto/OpenAPI e HTTP/DOM existentes.",
+      "residual": "Dados públicos sensíveis permanecem sem acesso controlado: TH-01/TH-02."
+    },
+    {
+      "id": "TH-07",
+      "title": "XSS persistido por regressão",
+      "stride": [
+        "T",
+        "I",
+        "E"
+      ],
+      "components": [
+        "P2"
+      ],
+      "assets": [
+        "A01",
+        "A04"
+      ],
+      "surfaces": [
+        "AS01",
+        "AS02"
+      ],
+      "flows": [
+        "F01",
+        "F05",
+        "F09",
+        "F10",
+        "F08",
+        "F04"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB3"
+      ],
+      "misuse": [
+        "MC-04"
+      ],
+      "controls": [
+        "C04",
+        "C01"
+      ],
+      "mitigations": [
+        "MT-07"
+      ],
+      "verification": [
+        "VT-07"
+      ],
+      "risk": {
+        "likelihood": 1,
+        "impact": 3,
+        "score": 3,
+        "priority": "Moderada"
+      },
+      "status": "Controlada no vetor atual",
+      "scenario": "Observação vira código se escape regredir ou frontend usar innerHTML. Elevação refere-se aos privilégios futuros da vítima, não a sessão já existente.",
+      "evidence": "Quatro payloads escapados; DOM sem script/img/eventos. Não há XSS explorável demonstrado hoje.",
+      "residual": "Novos contextos JS/URL exigem nova avaliação; CSP não substitui escape."
+    },
+    {
+      "id": "TH-08",
+      "title": "Injeção SQL por consulta insegura futura",
+      "stride": [
+        "T",
+        "I"
+      ],
+      "components": [
+        "P1",
+        "P3"
+      ],
+      "assets": [
+        "A01",
+        "A03"
+      ],
+      "surfaces": [
+        "AS01",
+        "AS03"
+      ],
+      "flows": [
+        "F01",
+        "F05",
+        "F07",
+        "F09",
+        "F10"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB2"
+      ],
+      "misuse": [
+        "MC-05"
+      ],
+      "controls": [
+        "C02",
+        "C03"
+      ],
+      "mitigations": [
+        "MT-08"
+      ],
+      "verification": [
+        "VT-08"
+      ],
+      "risk": {
+        "likelihood": 1,
+        "impact": 3,
+        "score": 3,
+        "priority": "Moderada"
+      },
+      "status": "Controlada no vetor atual",
+      "scenario": "Concatenação futura poderia transformar entrada em SQL; hoje acesso é parametrizado.",
+      "evidence": "Inspeção Session.get/select/ORM e testes de validação; sem finding SQLi ou captura específica de SQL emitido.",
+      "residual": "Preservar parâmetro; operação indevida sem autorização não é automaticamente SQLi."
+    },
+    {
+      "id": "TH-09",
+      "title": "Esgotamento e contenção SQLite",
+      "stride": [
+        "D"
+      ],
+      "components": [
+        "P1",
+        "P2",
+        "P3",
+        "D1"
+      ],
+      "assets": [
+        "A04",
+        "A03"
+      ],
+      "surfaces": [
+        "AS01",
+        "AS02",
+        "AS03"
+      ],
+      "flows": [
+        "F01",
+        "F03",
+        "F05",
+        "F07",
+        "F09"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB2"
+      ],
+      "misuse": [
+        "MC-07"
+      ],
+      "controls": [
+        "C05"
+      ],
+      "mitigations": [
+        "MT-09"
+      ],
+      "verification": [
+        "VT-09"
+      ],
+      "risk": {
+        "likelihood": 2,
+        "impact": 3,
+        "score": 6,
+        "priority": "Alta"
+      },
+      "status": "Parcialmente mitigada",
+      "scenario": "Limites de página não impedem volume, escrita contínua, corpo excessivo ou paginação cara.",
+      "evidence": "Rate limiting/quota/corpo total não configurados no app; sem benchmark de DoS.",
+      "residual": "Capacidade/infraestrutura exigem medição; limite por resposta não prova resiliência."
+    },
+    {
+      "id": "TH-10",
+      "title": "Leitura de arquivo SQLite/backup",
+      "stride": [
+        "I"
+      ],
+      "components": [
+        "D1"
+      ],
+      "assets": [
+        "A01",
+        "A02",
+        "A03"
+      ],
+      "surfaces": [
+        "AS04"
+      ],
+      "flows": [
+        "F09",
+        "F10"
+      ],
+      "boundaries": [
+        "TB2"
+      ],
+      "misuse": [
+        "MC-08"
+      ],
+      "controls": [],
+      "mitigations": [
+        "MT-10"
+      ],
+      "verification": [
+        "VT-10"
+      ],
+      "risk": {
+        "likelihood": 2,
+        "impact": 3,
+        "score": 6,
+        "priority": "Alta"
+      },
+      "status": "Condicional — infraestrutura",
+      "scenario": "Ator com acesso ao arquivo lê tudo sem passar pelos modelos da API.",
+      "evidence": "SQLite é local; ACL, criptografia de disco e backups não auditados. Não alegamos arquivo público.",
+      "residual": "Comprometimento do serviço pode contornar controle por rota; proteger chaves."
+    },
+    {
+      "id": "TH-11",
+      "title": "Adulteração/perda do armazenamento",
+      "stride": [
+        "T",
+        "R",
+        "D"
+      ],
+      "components": [
+        "P3",
+        "D1"
+      ],
+      "assets": [
+        "A01",
+        "A02",
+        "A03",
+        "A04"
+      ],
+      "surfaces": [
+        "AS04"
+      ],
+      "flows": [
+        "F09",
+        "F10"
+      ],
+      "boundaries": [
+        "TB2"
+      ],
+      "misuse": [
+        "MC-08"
+      ],
+      "controls": [],
+      "mitigations": [
+        "MT-10",
+        "MT-06"
+      ],
+      "verification": [
+        "VT-11"
+      ],
+      "risk": {
+        "likelihood": 2,
+        "impact": 3,
+        "score": 6,
+        "priority": "Alta"
+      },
+      "status": "Condicional — infraestrutura",
+      "scenario": "Ator com escrita altera/apaga banco/evidências e afeta serviço; falhas operacionais também podem causar perda.",
+      "evidence": "Projeto sem backup/restauração; não houve corrupção executada.",
+      "residual": "Definir recuperação e proteger cópias contra o mesmo comprometimento."
+    },
+    {
+      "id": "TH-12",
+      "title": "Interceptação/servidor falso sem TLS",
+      "stride": [
+        "S",
+        "T",
+        "I"
+      ],
+      "components": [
+        "P1",
+        "P2"
+      ],
+      "assets": [
+        "A01"
+      ],
+      "surfaces": [
+        "AS06"
+      ],
+      "flows": [
+        "F01",
+        "F02",
+        "F03",
+        "F04"
+      ],
+      "boundaries": [
+        "TB1"
+      ],
+      "misuse": [
+        "MC-09"
+      ],
+      "controls": [],
+      "mitigations": [
+        "MT-11"
+      ],
+      "verification": [
+        "VT-12"
+      ],
+      "risk": {
+        "likelihood": 2,
+        "impact": 3,
+        "score": 6,
+        "priority": "Alta"
+      },
+      "status": "Condicional — implantação em rede",
+      "scenario": "Se HTTP local for usado em rede, ator no caminho pode observar/modificar dados ou imitar servidor.",
+      "evidence": "Atual é HTTP loopback; não há evidência de exposição externa ou TLS de produção.",
+      "residual": "Score é do cenário condicional; autenticação não cifra o transporte."
+    },
+    {
+      "id": "TH-13",
+      "title": "Funções acima do papel permitido",
+      "stride": [
+        "E"
+      ],
+      "components": [
+        "P1",
+        "P2"
+      ],
+      "assets": [
+        "A01",
+        "A04"
+      ],
+      "surfaces": [
+        "AS01",
+        "AS02"
+      ],
+      "flows": [
+        "F01",
+        "F03",
+        "F05"
+      ],
+      "boundaries": [
+        "TB1"
+      ],
+      "misuse": [
+        "MC-01"
+      ],
+      "controls": [
+        "C02"
+      ],
+      "mitigations": [
+        "MT-03",
+        "MT-01"
+      ],
+      "verification": [
+        "VT-13"
+      ],
+      "risk": {
+        "likelihood": 3,
+        "impact": 3,
+        "score": 9,
+        "priority": "Crítica"
+      },
+      "status": "Aberta",
+      "scenario": "Clientes executam ações reservadas a perfis legítimos; login futuro sem regra por função mantém acesso indevido.",
+      "evidence": "Papéis/matriz não existem; não alegamos escalada de token/papel já implementado.",
+      "residual": "Raiz compartilhada com TH-01, mas testes de função são distintos de identidade/ownership."
+    },
+    {
+      "id": "TH-14",
+      "title": "Confusão de acesso M2M/humano",
+      "stride": [
+        "S",
+        "E",
+        "I"
+      ],
+      "components": [
+        "P4"
+      ],
+      "assets": [
+        "A01",
+        "A04"
+      ],
+      "surfaces": [
+        "AS07"
+      ],
+      "flows": [
+        "F11",
+        "F12"
+      ],
+      "boundaries": [
+        "TB4"
+      ],
+      "misuse": [
+        "MC-10"
+      ],
+      "controls": [],
+      "mitigations": [
+        "MT-12"
+      ],
+      "verification": [
+        "VT-14"
+      ],
+      "risk": {
+        "likelihood": 2,
+        "impact": 3,
+        "score": 6,
+        "priority": "Alta"
+      },
+      "status": "Planejada — integração futura",
+      "scenario": "Credencial parceira aceita em rotas humanas ou disponibilidade retorna dados de pacientes.",
+      "evidence": "E3/P4 são previstos, sem endpoint/token atual.",
+      "residual": "Avaliação antecipatória, não finding atual; revisar antes de integrar."
+    }
+  ],
+  "misuse_cases": [
+    {
+      "id": "MC-01",
+      "title": "Agir como funcionário e acessar consultas alheias",
+      "actor": "Cliente sem autenticação hoje; sujeito de baixo privilégio no futuro",
+      "preconditions": "Alcança API; variante futura exige conta válida.",
+      "steps": "1. Chama CRUD sem credencial; 2. escolhe ID; 3. lê/altera recurso alheio; 4. futuramente tenta ação acima do papel.",
+      "impact": "Acesso sem identidade, ownership ou permissão.",
+      "threats": [
+        "TH-01",
+        "TH-02",
+        "TH-13"
+      ]
+    },
+    {
+      "id": "MC-02",
+      "title": "Adulterar consulta e atributos internos",
+      "actor": "Cliente malicioso",
+      "preconditions": "Envia POST/PUT JSON.",
+      "steps": "1. Usa IDs positivos inexistentes e horário conflitante; 2. em tentativa separada, acrescenta criado_em/referencia_interna; 3. verifica persistência/rejeição.",
+      "impact": "Negócio inconsistente; tentativa contra auditoria já é rejeitada.",
+      "threats": [
+        "TH-03",
+        "TH-04"
+      ]
+    },
+    {
+      "id": "MC-03",
+      "title": "Extrair dados pelo contrato de saída",
+      "actor": "Cliente que consulta API/agenda",
+      "preconditions": "Alcança GET /consultas ou /agenda.",
+      "steps": "1. Lista consultas; 2. inspeciona JSON/HTML/OpenAPI; 3. procura auditoria e dados de pacientes; 4. amplia busca por IDs/páginas.",
+      "impact": "Auditoria omitida hoje; dados públicos continuam sem autorização.",
+      "threats": [
+        "TH-01",
+        "TH-02",
+        "TH-06"
+      ]
+    },
+    {
+      "id": "MC-04",
+      "title": "Executar observação persistida",
+      "actor": "Cliente que grava texto",
+      "preconditions": "Pode gravar observacao; outra pessoa abre a agenda do dia.",
+      "steps": "1. Persiste <img src=x onerror=alert(1)> em dado fictício; 2. recepção abre /agenda; 3. espera transformação em HTML ativo.",
+      "impact": "Se escape regredir, controle da página e possível uso futuro dos privilégios da vítima. Hoje texto é escapado e não há sessão autenticada a roubar.",
+      "threats": [
+        "TH-07"
+      ]
+    },
+    {
+      "id": "MC-05",
+      "title": "Transformar entrada em SQL",
+      "actor": "Cliente malicioso",
+      "preconditions": "Pode enviar corpo/parâmetros.",
+      "steps": "1. Envia ID malformado ou sintaxe SQL em observacao; 2. tenta mudar comando executado; 3. busca leitura/alteração extra.",
+      "impact": "Vetor contido por validação/parametrização atuais; regressão a prevenir.",
+      "threats": [
+        "TH-08"
+      ]
+    },
+    {
+      "id": "MC-06",
+      "title": "Excluir ou alterar e negar autoria",
+      "actor": "Cliente ou operador malicioso",
+      "preconditions": "A ação alcança o endpoint; hoje não exige identidade.",
+      "steps": "1. Executa PUT/DELETE em consulta fictícia; 2. nega autoria; 3. exige prova de quem agiu.",
+      "impact": "UUID/criado_em e access log não demonstram autoria confiável.",
+      "threats": [
+        "TH-05"
+      ]
+    },
+    {
+      "id": "MC-07",
+      "title": "Consumir capacidade da agenda",
+      "actor": "Cliente automatizado",
+      "preconditions": "Alcança serviço, sem acesso ao host.",
+      "steps": "1. Repete leituras/paginação/gravações; 2. aumenta custo e banco; 3. disputa capacidade com usuários legítimos.",
+      "impact": "Consumo de CPU/disco/conexões ou contenção. Não foi executado ataque de carga.",
+      "threats": [
+        "TH-09"
+      ]
+    },
+    {
+      "id": "MC-08",
+      "title": "Copiar ou danificar banco fora da API",
+      "actor": "Ator com acesso local indevido/processo comprometido",
+      "preconditions": "Privilégio adicional de leitura/escrita em arquivo/diretório/backup, não comprovado remotamente.",
+      "steps": "1. Copia SQLite para contornar filtros; ou 2. altera/apaga banco; 3. explora ausência de restauração testada.",
+      "impact": "Exposição total, alteração ou perda de dados; ACL real é desconhecida.",
+      "threats": [
+        "TH-10",
+        "TH-11"
+      ]
+    },
+    {
+      "id": "MC-09",
+      "title": "Interceptar futura implantação HTTP",
+      "actor": "Adversário no caminho de rede",
+      "preconditions": "Serviço exposto em rede sem TLS válido.",
+      "steps": "1. Observa tráfego; 2. tenta obter/modificar consulta; 3. tenta imitar servidor.",
+      "impact": "Vazamento/alteração/servidor falso no cenário condicional; não alegamos interceptação do loopback.",
+      "threats": [
+        "TH-12"
+      ]
+    },
+    {
+      "id": "MC-10",
+      "title": "Usar parceiro como acesso humano",
+      "actor": "Cliente M2M comprometido",
+      "preconditions": "Integração futura ativa e credencial do parceiro comprometida.",
+      "steps": "1. Usa credencial M2M; 2. pede mais que disponibilidade; 3. tenta CRUD/agenda humana; 4. testa escopos/audiência indevidos.",
+      "impact": "Exposição/ações além do escopo; integração ainda não existe.",
+      "threats": [
+        "TH-14"
+      ]
+    }
+  ],
+  "mitigations": [
+    {
+      "id": "MT-01",
+      "title": "Identidade verificável",
+      "owner": "Backend / autenticação",
+      "action": "Autenticação centralizada; validar credenciais e, quando adotado JWT, assinatura, algoritmo permitido, emissor/audiência e expiração. Não confiar no ID ou papel declarado pelo cliente.",
+      "status": "Planejada"
+    },
+    {
+      "id": "MT-02",
+      "title": "Autorização por recurso",
+      "owner": "Backend / autorização",
+      "action": "Centralizar ownership e escopo organizacional em leitura, escrita, exclusão, listagens e agenda. Identidade vem da autenticação, não do corpo da consulta.",
+      "status": "Planejada"
+    },
+    {
+      "id": "MT-03",
+      "title": "Permissões por função",
+      "owner": "Backend + negócio",
+      "action": "Aprovar matriz de recepcionista/profissional/administrador; negar por padrão e verificar cada ação no servidor. A matriz exata ainda não está definida.",
+      "status": "Planejada; depende da matriz de negócio"
+    },
+    {
+      "id": "MT-04",
+      "title": "Contratos explícitos",
+      "owner": "Backend / modelos",
+      "action": "Preservar ConsultaWrite extra='forbid', ConsultaRead, auditoria gerada no servidor e projeção pública antes do template.",
+      "status": "Implementada como C01/C02; manter regressões"
+    },
+    {
+      "id": "MT-05",
+      "title": "Consistência do agendamento",
+      "owner": "Backend + negócio",
+      "action": "Validar existência/vínculo de paciente e profissional; regra de conflito aplicada atomicamente. Proposta mínima a confirmar: uma consulta ativa por profissional no mesmo instante; intervalos por duração exigem modelagem adicional.",
+      "status": "Planejada; regra de conflito proposta"
+    },
+    {
+      "id": "MT-06",
+      "title": "Trilha de auditoria protegida",
+      "owner": "Backend + plataforma",
+      "action": "Registrar sujeito autenticado, ação, recurso, instante UTC, resultado e correlação; proteger integridade/acesso e definir retenção. Excluir tokens, credenciais e observacao dos logs de rotina.",
+      "status": "Planejada"
+    },
+    {
+      "id": "MT-07",
+      "title": "Renderização contextual segura",
+      "owner": "Backend / templates",
+      "action": "Preservar autoescape e projeção pública; não aplicar safe/Markup a dados de usuário. Futuro consumidor JSON deve renderizar como texto; avaliar CSP como camada adicional.",
+      "status": "C04 implementado; CSP/cliente futuro não implementados"
+    },
+    {
+      "id": "MT-08",
+      "title": "Parametrização SQL",
+      "owner": "Backend / persistência",
+      "action": "Preservar SQLModel parametrizado; proibir concatenação de entrada; revisar buscas dinâmicas e regressões com conteúdo tratado como dado.",
+      "status": "C03 implementado; teste específico a ampliar"
+    },
+    {
+      "id": "MT-09",
+      "title": "Proteção de capacidade",
+      "owner": "Backend + plataforma",
+      "action": "Definir limites de corpo, requisições por cliente/operação, quotas de escrita, timeouts e monitoramento. Medir paginação cara e contenção SQLite em carga controlada.",
+      "status": "Parcial: C05 limita respostas/campos, não volume total"
+    },
+    {
+      "id": "MT-10",
+      "title": "Armazenamento e recuperação",
+      "owner": "Plataforma",
+      "action": "Conta de serviço e ACL restritas, proteção de dados/backups em repouso e gestão de chaves; testar restauração. Não servir banco ou diretório de dados como arquivos estáticos.",
+      "status": "Planejada; host não auditado"
+    },
+    {
+      "id": "MT-11",
+      "title": "Transporte protegido",
+      "owner": "Plataforma + backend",
+      "action": "TLS e validação de certificado para uso em rede; definir terminação proxy e cabeçalhos confiáveis. Loopback HTTP não comprova TLS de implantação.",
+      "status": "Planejada para exposição em rede"
+    },
+    {
+      "id": "MT-12",
+      "title": "Separação M2M/humano",
+      "owner": "Backend / integração",
+      "action": "Definir identidade/credenciais, audiência e escopos do parceiro e contrato mínimo de disponibilidade. Negar acesso à agenda humana e CRUD; não enviar pacientes, observações ou auditoria.",
+      "status": "Planejada; E3/P4 não implementados"
+    }
+  ],
+  "verifications": [
+    {
+      "id": "VT-01",
+      "criterion": "Sem credencial válida, API retorna 401; agenda deve negar acesso sem conteúdo de pacientes, por 401 ou redirecionamento ao login conforme fluxo aprovado. Credencial inválida/expirada também é rejeitada.",
+      "status": "Planejada",
+      "evidence": "evidencias/exercicio_03/sondagem_cia.json demonstra a lacuna"
+    },
+    {
+      "id": "VT-02",
+      "criterion": "Com dois sujeitos/recursos, B não lê/altera/exclui consulta de A nem a encontra na listagem/agenda. Política proposta: 404 para recurso alheio, sem alteração no banco. Incluir casos positivos autorizados.",
+      "status": "Planejada; base para Exercício 6",
+      "evidence": "buscar_consulta hoje consulta somente por ID"
+    },
+    {
+      "id": "VT-03",
+      "criterion": "POST/PUT com criado_em, referencia_interna ou campo extra retorna 422 sem modificar registro; revalidar lista permitida ao evoluir schema.",
+      "status": "Já existe parcialmente; manter",
+      "evidence": "tests/test_exposicao_templates.py::test_cliente_nao_pode_definir_auditoria"
+    },
+    {
+      "id": "VT-04",
+      "criterion": "IDs inexistentes rejeitados sem persistência. Após aprovar regra de slot, duas gravações concorrentes produzem apenas uma consulta ativa; outra falha controladamente (proposta 409).",
+      "status": "Planejada; depende da regra de negócio",
+      "evidence": "Consulta armazena IDs sem FK e sem regra de conflito"
+    },
+    {
+      "id": "VT-05",
+      "criterion": "Ação autorizada e tentativa negada geram evento com resultado e identidade validada quando disponível; sem autenticação, registrar ator anônimo/identidade não validada, sem inventar autoria. Aplicativo não apaga silenciosamente evento no destino protegido. Testar ausência de tokens e observacao.",
+      "status": "Planejada",
+      "evidence": "criado_em/UUID não registram autoria/histórico"
+    },
+    {
+      "id": "VT-06",
+      "criterion": "POST, GET individual, lista, PUT, contexto HTML e OpenAPI só têm campos aprovados; marcador interno fictício não aparece. Toda alteração pública exige aprovação explícita.",
+      "status": "Já existe; manter",
+      "evidence": "tests/test_exposicao_templates.py::test_auditoria_persistida_mas_ausente_em_todas_respostas; test_openapi_publica_apenas_contratos_publicos"
+    },
+    {
+      "id": "VT-07",
+      "criterion": "Persistir script/img/svg/texto Jinja em observacao; saída contém texto escapado, sem elemento executável nem evento. Confirmar DOM e, futuramente, frontend.",
+      "status": "Já existe no HTML; ampliar ao frontend",
+      "evidence": "tests/test_exposicao_templates.py::test_xss_persistido_renderizado_como_texto; evidencias/exercicio_02/navegador_dom.json"
+    },
+    {
+      "id": "VT-08",
+      "criterion": "Texto parecido com SQL permanece literal; nenhum registro extra é lido/alterado/removido. ID malformado retorna 422. Capturar comandos emitidos e confirmar parâmetros separados do SQL.",
+      "status": "Parcial; teste específico planejado",
+      "evidence": "Inspeção ORM e testes CRUD/validação existentes"
+    },
+    {
+      "id": "VT-09",
+      "criterion": "Em ambiente isolado, limites configurados geram 429/413 conforme caso; serviço recupera capacidade. Medir latência/erros contra orçamento definido e quota de escrita.",
+      "status": "Planejada; carga não executada",
+      "evidence": "test_paginacao_invalida cobre só limite de resposta"
+    },
+    {
+      "id": "VT-10",
+      "criterion": "Conta não autorizada não lê banco/configuração/backup na implantação; arquivo não é servido via HTTP. Verificar criptografia e acesso às chaves sem copiar dados reais.",
+      "status": "Planejada; infraestrutura",
+      "evidence": "app/main.py só monta app/static; ACL do host desconhecida"
+    },
+    {
+      "id": "VT-11",
+      "criterion": "Em cópia descartável, falha/corrupção simulada dispara detecção e recuperação. Restaurar backup e conferir integridade/contagem e RPO/RTO definidos. Nunca destruir banco real.",
+      "status": "Planejada",
+      "evidence": "Projeto não possui backup/restauração"
+    },
+    {
+      "id": "VT-12",
+      "criterion": "Implantação de teste em rede usa HTTPS válido; cliente rejeita certificado inválido e não transmite dados sensíveis por HTTP. Verificar terminação TLS e salto interno do proxy.",
+      "status": "Planejada",
+      "evidence": "README demonstra apenas HTTP local"
+    },
+    {
+      "id": "VT-13",
+      "criterion": "Cada papel/ação da matriz aprovada tem caso permitido e negado; cabeçalho/campo de papel não amplia acesso. Ação proibida: 403 sem efeito. Recurso alheio segue VT-02.",
+      "status": "Planejada; depende da matriz",
+      "evidence": "app/auth é só preparação de pacote"
+    },
+    {
+      "id": "VT-14",
+      "criterion": "M2M com credencial/escopo válidos recebe só disponibilidade; ausência de credencial: 401. Escopo/audiência indevidos ou tentativa de CRUD/agenda humana: negar sem dados.",
+      "status": "Planejada; integração inexistente",
+      "evidence": "DFD E3/P4/F11/F12 são previstos"
+    }
+  ],
+  "assets": [
+    {
+      "id": "A01",
+      "description": "Consultas: IDs de paciente/profissional, horário, status e observacao; potencialmente sensíveis quando ligados à pessoa."
+    },
+    {
+      "id": "A02",
+      "description": "Metadados internos criado_em/referencia_interna; não são trilha de eventos."
+    },
+    {
+      "id": "A03",
+      "description": "Arquivo SQLite e eventuais cópias; backups ainda não implementados."
+    },
+    {
+      "id": "A04",
+      "description": "Disponibilidade da API, agenda e capacidade operacional."
+    },
+    {
+      "id": "A05",
+      "description": "Código, configuração, dependências e evidências do projeto."
+    }
+  ],
+  "surfaces": [
+    {
+      "id": "AS01",
+      "description": "HTTP /consultas e /consultas/{id}: JSON, parâmetros, IDs, leitura/criação/edição/exclusão.",
+      "components": [
+        "P1"
+      ],
+      "boundaries": [
+        "TB1"
+      ]
+    },
+    {
+      "id": "AS02",
+      "description": "HTTP /agenda: dia/pagina, consulta ao banco e interpretação do HTML.",
+      "components": [
+        "P2"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB3"
+      ]
+    },
+    {
+      "id": "AS03",
+      "description": "Operações SQLModel/Session e limites transacionais; não é endpoint de rede separado.",
+      "components": [
+        "P3",
+        "D1"
+      ],
+      "boundaries": [
+        "TB2"
+      ]
+    },
+    {
+      "id": "AS04",
+      "description": "Arquivo SQLite, diretório, configuração e cópias acessíveis pelo host; requer privilégio adicional.",
+      "components": [
+        "D1"
+      ],
+      "boundaries": [
+        "TB2"
+      ]
+    },
+    {
+      "id": "AS05",
+      "description": "/docs e /openapi.json expõem contrato; /health e /static são superfícies auxiliares.",
+      "components": [
+        "P1",
+        "P2"
+      ],
+      "boundaries": [
+        "TB1"
+      ]
+    },
+    {
+      "id": "AS06",
+      "description": "Transporte cliente/servidor e futura terminação TLS; atualmente apenas HTTP loopback observado.",
+      "components": [
+        "P1",
+        "P2"
+      ],
+      "boundaries": [
+        "TB1"
+      ]
+    },
+    {
+      "id": "AS07",
+      "description": "Futuro cliente parceiro E3 e endpoint P4 de disponibilidade; nenhuma chamada implementada.",
+      "components": [
+        "P4"
+      ],
+      "boundaries": [
+        "TB4"
+      ]
+    }
+  ],
+  "risk_method": {
+    "context": "Priorização qualitativa para operação pretendida com dados reais, arquitetura atual e atacante que alcance a superfície. Não é medição de dano na demonstração fictícia, CVSS, DREAD ou security gate.",
+    "likelihood": {
+      "1": "Vetor com controle atual ou exploração que exige regressão; baixa viabilidade na baseline.",
+      "2": "Exige condição adicional, privilégio local, posição de rede ou volume não medido.",
+      "3": "Basta alcançar rota sem barreira pertinente; oportunidade direta no estado atual."
+    },
+    "impact": {
+      "1": "Efeito limitado e reversível sem dado de paciente/serviço relevante.",
+      "2": "Alteração/exposição limitada ou prejuízo de rastreabilidade/agenda recuperável.",
+      "3": "Exposição de pacientes, operação indevida importante ou interrupção relevante."
+    },
+    "formula": "P × I",
+    "bands": {
+      "6": "Alta",
+      "9": "Crítica",
+      "1-2": "Baixa",
+      "3-4": "Moderada"
+    },
+    "note": "Estimativas autorais justificadas pelos pré-requisitos/evidências de cada ameaça; reavaliar ao mudar arquitetura. Scores condicionais não são findings de componentes inexistentes."
+  },
+  "stride_matrix": [
+    {
+      "component": "P1",
+      "S": "TH-01, TH-12",
+      "T": "TH-02, TH-03, TH-04, TH-08, TH-12",
+      "R": "TH-05",
+      "I": "TH-02, TH-06, TH-08, TH-12",
+      "D": "TH-09",
+      "E": "TH-13"
+    },
+    {
+      "component": "P2",
+      "S": "TH-01, TH-12",
+      "T": "TH-07, TH-12 (conteúdo interpretado/transporte)",
+      "R": "TH-05",
+      "I": "TH-02, TH-06, TH-07, TH-12",
+      "D": "TH-09",
+      "E": "TH-13; TH-07 se contexto da vítima adquirir privilégios"
+    },
+    {
+      "component": "P3",
+      "S": "Não possui identidade própria: herda sujeito de P1/P2. Lacuna de origem: TH-01.",
+      "T": "TH-04, TH-08, TH-11",
+      "R": "TH-05",
+      "I": "TH-08; dados íntegros podem ser devolvidos a solicitante indevido por P1/P2.",
+      "D": "TH-09, TH-11",
+      "E": "Sem fronteira autônoma de papéis: privilégios do processo/host são pré-condição de TH-10/TH-11."
+    },
+    {
+      "component": "D1",
+      "S": "Não autentica usuário humano; alteração/substituição de arquivo é T, em TH-11.",
+      "T": "TH-04, TH-11",
+      "R": "TH-05, TH-11",
+      "I": "TH-10",
+      "D": "TH-09, TH-11",
+      "E": "Arquivo não eleva privilégio sozinho; acesso local adicional condiciona TH-10/TH-11."
+    }
+  ],
+  "existing_controls": {
+    "C01": "Whitelist de propriedades JSON/contexto HTML",
+    "C02": "Validação explícita e extra='forbid'",
+    "C03": "SQLModel parametrizado",
+    "C04": "Autoescape Jinja2",
+    "C05": "Limites de campos/paginação/datas",
+    "C06": "no-store em /agenda",
+    "C07": "Configuração, dependências fixadas, .env.example",
+    "C08": "Testes e revisões dos exercícios anteriores"
+  }
+}

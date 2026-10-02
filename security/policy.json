@@ -1,0 +1,5 @@
+{
+  "version": 1,
+  "description": "Regressoes obrigatorias bloqueiam sempre. High/Critical bloqueiam. Medium sem triagem bloqueia. SCA com qualquer vulnerabilidade bloqueia ate correcao/triagem formal.",
+  "zap_medium_reviews": {}
+}

@@ -1,0 +1,23 @@
+{
+  "verified_at_utc": "2026-09-25T17:45:19.949837+00:00",
+  "pytest_passed": 175,
+  "pytest_warnings": 2,
+  "new_application_cases": 9,
+  "new_gate_cvss_inventory_cases": 39,
+  "ruff": "passed",
+  "formatted_python_files": 45,
+  "actionlint": "1.7.12 passed",
+  "bandit_findings": 0,
+  "sca_before_entries": 10,
+  "sca_before_unique_advisories": 5,
+  "sca_after_findings": 0,
+  "zap_mode": "passive authenticated corpus",
+  "zap_responses": 9,
+  "zap_alerts": 7,
+  "gate": "passed with explicit dated medium ZAP reviews",
+  "real_sca_baseline_replay": "blocked",
+  "github_hosted_run": false,
+  "branch_protection_configured": false,
+  "iast_executed": false,
+  "zip_created": false
+}

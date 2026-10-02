@@ -1,0 +1,36 @@
+{
+  "baseline": "TM-CLINICA 1.0; IDs preservados, estado atualizado no capstone Ex13",
+  "mandatory_tests": [
+    {"threats": ["TH-14"], "test": "test_m2m_disponibilidade_minima_scopes_claims_auditoria"},
+    {"threats": ["TH-14", "TH-13"], "test": "test_m2m_nao_acessa_rotas_humanas"},
+    {"threats": ["TH-14"], "test": "test_humano_nao_acessa_m2m"},
+    {"threats": ["TH-14"], "test": "test_m2m_revogacao_revalida_banco"},
+    {"threats": ["TH-02", "TH-07"], "test": "test_lab_bola_xss_mesmo_ataque_antes_depois"},
+    {"threats": ["TH-02", "TH-06"], "test": "test_criar_e_buscar_consulta_com_session_mock"},
+    {"threats": ["TH-01", "TH-03"], "test": "test_mock_entrada_rejeita_duplicatas_extras_e_scope"},
+    {"threats": ["TH-02"], "test": "test_mock_ownership_consulta_parametrizada_e_404"},
+    {"threats": ["TH-09"], "test": "test_body_limit_413_preserva_headers_cors"},
+    {"threats": ["TH-01", "TH-06", "TH-13"], "test": "test_openapi_capstone_contrato_seguro"},
+    {"threats": ["TH-07"], "test": "test_docs_locais_csp_e_integridade_de_assets"},
+    {"threats": ["TH-09"], "test": "test_ambiente_respeita_versoes_pinadas"},
+    {"threats": ["TH-01"], "test": "test_jwt_invalido_negado"},
+    {"threats": ["TH-02"], "test": "test_th02_vinculo_revogado_invalida_acesso_com_jwt_ainda_valido"},
+    {"threats": ["TH-02", "TH-05"], "test": "test_th02_th05_delete_alheio_preserva_dado_e_registra_ator"},
+    {"threats": ["TH-03", "TH-06"], "test": "test_th03_th06_put_nao_aceita_metadados_nem_altera_recurso"},
+    {"threats": ["TH-04"], "test": "test_conflito_concorrente_persistido_em_conexoes_distintas"},
+    {"threats": ["TH-05"], "test": "test_falha_de_auditoria_reverte_mutacao"},
+    {"threats": ["TH-07"], "test": "test_xss_persistido_renderizado_como_texto"},
+    {"threats": ["TH-08"], "test": "test_payload_sql_separado_do_comando_no_driver"},
+    {"threats": ["TH-09"], "test": "test_login_por_ip_limita_troca_de_username"},
+    {"threats": ["TH-12"], "test": "test_headers_http_https_e_forwarded_nao_confiavel"},
+    {"threats": ["TH-13"], "test": "test_nao_administrador_impedido_de_acessar_rota_admin"},
+    {"threats": ["TH-13"], "test": "test_th13_papel_injetado_em_claim_e_header_nao_eleva_privilegio"}
+  ],
+  "not_claimed_complete": {
+    "TH-09": "Corpo limitado a 64 KiB; DoS volumetrico, conexoes lentas e concorrencia ainda exigem infraestrutura",
+    "TH-10": "ACL, criptografia e backups exigem verificacao de implantacao",
+    "TH-11": "Restauração e recuperacao de desastre ainda nao exercitadas",
+    "TH-12": "Cabeçalho HSTS testado; TLS real nao implantado",
+    "TH-14": "M2M implementado e testado; TLS, custodia/rotacao operacional de segredo e contrato real exigem implantacao"
+  }
+}

@@ -1,0 +1,1338 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "API de Agendamento de Consultas",
+    "description": "Assessment: use somente dados ficticios neste ambiente local.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/agenda": {
+      "get": {
+        "tags": [
+          "Agenda"
+        ],
+        "summary": "Agenda",
+        "operationId": "agenda_agenda_get",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          },
+          {
+            "JWTBearer": []
+          },
+          {
+            "AgendaCookie": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "dia",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "format": "date"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Dia"
+            }
+          },
+          {
+            "name": "pagina",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 1000000,
+              "minimum": 1,
+              "default": 1,
+              "title": "Pagina"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          },
+          "401": {
+            "description": "Credencial ausente, invalida ou revogada."
+          },
+          "403": {
+            "description": "Papel ou vinculo nao autorizado."
+          },
+          "503": {
+            "description": "Persistencia ou auditoria indisponivel."
+          },
+          "429": {
+            "description": "Orcamento esgotado; consultar Retry-After.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": [
+          "Status"
+        ],
+        "summary": "Health",
+        "description": "Indica que o processo responde; nao verifica banco nem dependencias.",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          }
+        }
+      }
+    },
+    "/consultas": {
+      "post": {
+        "tags": [
+          "Consultas"
+        ],
+        "summary": "Criar Consulta",
+        "operationId": "criar_consulta_consultas_post",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          },
+          {
+            "JWTBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsultaWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsultaRead"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          },
+          "401": {
+            "description": "Credencial ausente, invalida ou revogada."
+          },
+          "403": {
+            "description": "Papel ou vinculo nao autorizado."
+          },
+          "503": {
+            "description": "Persistencia ou auditoria indisponivel."
+          },
+          "429": {
+            "description": "Orcamento esgotado; consultar Retry-After.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflito de persistencia ou estado."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Consultas"
+        ],
+        "summary": "Listar Consultas",
+        "operationId": "listar_consultas_consultas_get",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          },
+          {
+            "JWTBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 2147483647,
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ConsultaRead"
+                  },
+                  "title": "Response Listar Consultas Consultas Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          },
+          "401": {
+            "description": "Credencial ausente, invalida ou revogada."
+          },
+          "403": {
+            "description": "Papel ou vinculo nao autorizado."
+          },
+          "503": {
+            "description": "Persistencia ou auditoria indisponivel."
+          },
+          "429": {
+            "description": "Orcamento esgotado; consultar Retry-After.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consultas/{consulta_id}": {
+      "get": {
+        "tags": [
+          "Consultas"
+        ],
+        "summary": "Obter Consulta",
+        "operationId": "obter_consulta_consultas__consulta_id__get",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          },
+          {
+            "JWTBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "consulta_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "maximum": 2147483647,
+              "exclusiveMinimum": 0,
+              "title": "Consulta Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsultaRead"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          },
+          "401": {
+            "description": "Credencial ausente, invalida ou revogada."
+          },
+          "403": {
+            "description": "Papel ou vinculo nao autorizado."
+          },
+          "503": {
+            "description": "Persistencia ou auditoria indisponivel."
+          },
+          "429": {
+            "description": "Orcamento esgotado; consultar Retry-After.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Consulta nao encontrada ou fora do ownership."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Consultas"
+        ],
+        "summary": "Atualizar Consulta",
+        "operationId": "atualizar_consulta_consultas__consulta_id__put",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          },
+          {
+            "JWTBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "consulta_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "maximum": 2147483647,
+              "exclusiveMinimum": 0,
+              "title": "Consulta Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConsultaWrite"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConsultaRead"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          },
+          "401": {
+            "description": "Credencial ausente, invalida ou revogada."
+          },
+          "403": {
+            "description": "Papel ou vinculo nao autorizado."
+          },
+          "503": {
+            "description": "Persistencia ou auditoria indisponivel."
+          },
+          "429": {
+            "description": "Orcamento esgotado; consultar Retry-After.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflito de persistencia ou estado."
+          },
+          "404": {
+            "description": "Consulta nao encontrada ou fora do ownership."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Consultas"
+        ],
+        "summary": "Excluir Consulta",
+        "operationId": "excluir_consulta_consultas__consulta_id__delete",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          },
+          {
+            "JWTBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "consulta_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "maximum": 2147483647,
+              "exclusiveMinimum": 0,
+              "title": "Consulta Id"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          },
+          "401": {
+            "description": "Credencial ausente, invalida ou revogada."
+          },
+          "403": {
+            "description": "Papel ou vinculo nao autorizado."
+          },
+          "503": {
+            "description": "Persistencia ou auditoria indisponivel."
+          },
+          "429": {
+            "description": "Orcamento esgotado; consultar Retry-After.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflito de persistencia ou estado."
+          },
+          "404": {
+            "description": "Consulta nao encontrada ou fora do ownership."
+          }
+        }
+      }
+    },
+    "/auth/token": {
+      "post": {
+        "tags": [
+          "Autenticacao"
+        ],
+        "summary": "Login",
+        "operationId": "login_auth_token_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenRead"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "MFA administrativo pendente; sem access_token.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DesafioRead"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          },
+          "429": {
+            "description": "Orcamento esgotado; consultar Retry-After.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Autenticacao negada."
+          },
+          "422": {
+            "description": "Entrada invalida."
+          },
+          "503": {
+            "description": "MFA, persistencia ou auditoria indisponivel."
+          },
+          "415": {
+            "description": "Tipo de formulario nao suportado."
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {
+                  "grant_type": {
+                    "const": "password",
+                    "title": "Grant Type",
+                    "type": "string"
+                  },
+                  "username": {
+                    "pattern": "^[A-Za-z0-9._-]{1,100}$",
+                    "title": "Username",
+                    "type": "string"
+                  },
+                  "password": {
+                    "format": "password",
+                    "title": "Password",
+                    "type": "string",
+                    "writeOnly": true
+                  },
+                  "scope": {
+                    "const": "",
+                    "default": "",
+                    "title": "Scope",
+                    "type": "string"
+                  },
+                  "client_id": {
+                    "const": "",
+                    "default": "",
+                    "title": "Client Id",
+                    "type": "string"
+                  },
+                  "client_secret": {
+                    "const": "",
+                    "default": "",
+                    "title": "Client Secret",
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "grant_type",
+                  "username",
+                  "password"
+                ],
+                "title": "LoginForm",
+                "type": "object"
+              }
+            }
+          }
+        },
+        "description": "OAuth2 password para humanos. Administrador recebe 202 e deve confirmar /auth/mfa; depois pode usar JWTBearer no Swagger. Nao ha fluxo M2M nesta versao. Senha limitada a 72 bytes UTF-8; campos duplicados, extras e query sao rejeitados."
+      }
+    },
+    "/auth/mfa": {
+      "post": {
+        "tags": [
+          "Autenticacao"
+        ],
+        "summary": "Confirm Mfa",
+        "operationId": "confirm_mfa_auth_mfa_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MFAWrite"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TokenRead"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          },
+          "429": {
+            "description": "Orcamento esgotado; consultar Retry-After.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Autenticacao negada."
+          },
+          "503": {
+            "description": "MFA, persistencia ou auditoria indisponivel."
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "tags": [
+          "Autenticacao"
+        ],
+        "summary": "Logout",
+        "operationId": "logout_auth_logout_post",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          },
+          "401": {
+            "description": "Credencial ausente, invalida ou revogada."
+          },
+          "403": {
+            "description": "Papel ou vinculo nao autorizado."
+          },
+          "503": {
+            "description": "Persistencia ou auditoria indisponivel."
+          },
+          "422": {
+            "description": "Corpo ou query invalido."
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          },
+          {
+            "JWTBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {},
+                "title": "CorpoVazio",
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/browser-session": {
+      "post": {
+        "tags": [
+          "Autenticacao"
+        ],
+        "summary": "Browser Session",
+        "operationId": "browser_session_auth_browser_session_post",
+        "responses": {
+          "204": {
+            "description": "Successful Response"
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          },
+          "401": {
+            "description": "Credencial ausente, invalida ou revogada."
+          },
+          "403": {
+            "description": "Papel ou vinculo nao autorizado."
+          },
+          "503": {
+            "description": "Persistencia ou auditoria indisponivel."
+          },
+          "429": {
+            "description": "Orcamento esgotado; consultar Retry-After.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Corpo ou query invalido."
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          },
+          {
+            "JWTBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "additionalProperties": false,
+                "properties": {},
+                "title": "CorpoVazio",
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/painel": {
+      "get": {
+        "tags": [
+          "Administracao"
+        ],
+        "summary": "Painel",
+        "operationId": "painel_admin_painel_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AdminRead"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          },
+          "401": {
+            "description": "Credencial ausente, invalida ou revogada."
+          },
+          "403": {
+            "description": "Papel ou vinculo nao autorizado."
+          },
+          "503": {
+            "description": "Persistencia ou auditoria indisponivel."
+          },
+          "429": {
+            "description": "Orcamento esgotado; consultar Retry-After.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          },
+          {
+            "JWTBearer": []
+          }
+        ]
+      }
+    },
+    "/admin/auditoria": {
+      "get": {
+        "tags": [
+          "Administracao"
+        ],
+        "summary": "Auditoria",
+        "operationId": "auditoria_admin_auditoria_get",
+        "security": [
+          {
+            "OAuth2PasswordBearer": []
+          },
+          {
+            "JWTBearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 100,
+              "minimum": 1,
+              "default": 20,
+              "title": "Limit"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 10000,
+              "minimum": 0,
+              "default": 0,
+              "title": "Offset"
+            }
+          },
+          {
+            "name": "alerta",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Alerta"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AuditoriaRead"
+                  },
+                  "title": "Response Auditoria Admin Auditoria Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          },
+          "413": {
+            "description": "Corpo maior que o limite configurado."
+          },
+          "401": {
+            "description": "Credencial ausente, invalida ou revogada."
+          },
+          "403": {
+            "description": "Papel ou vinculo nao autorizado."
+          },
+          "503": {
+            "description": "Persistencia ou auditoria indisponivel."
+          },
+          "429": {
+            "description": "Orcamento esgotado; consultar Retry-After.",
+            "headers": {
+              "Retry-After": {
+                "schema": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AcaoAuditoria": {
+        "type": "string",
+        "enum": [
+          "http",
+          "consulta.criar",
+          "consulta.atualizar",
+          "consulta.excluir"
+        ],
+        "title": "AcaoAuditoria"
+      },
+      "AdminRead": {
+        "properties": {
+          "message": {
+            "type": "string",
+            "title": "Message"
+          },
+          "mfa_verified": {
+            "type": "boolean",
+            "title": "Mfa Verified"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "message",
+          "mfa_verified"
+        ],
+        "title": "AdminRead"
+      },
+      "AuditoriaRead": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "title": "Id"
+          },
+          "instante": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Instante"
+          },
+          "request_id": {
+            "type": "string",
+            "title": "Request Id"
+          },
+          "ator_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Ator Id"
+          },
+          "acao": {
+            "$ref": "#/components/schemas/AcaoAuditoria"
+          },
+          "rota": {
+            "type": "string",
+            "title": "Rota"
+          },
+          "metodo": {
+            "type": "string",
+            "title": "Metodo"
+          },
+          "recurso_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recurso Id"
+          },
+          "status_http": {
+            "type": "integer",
+            "title": "Status Http"
+          },
+          "alerta": {
+            "type": "boolean",
+            "title": "Alerta"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "instante",
+          "request_id",
+          "ator_id",
+          "acao",
+          "rota",
+          "metodo",
+          "recurso_id",
+          "status_http",
+          "alerta"
+        ],
+        "title": "AuditoriaRead"
+      },
+      "ConsultaRead": {
+        "properties": {
+          "id": {
+            "type": "integer",
+            "maximum": 2147483647.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Id"
+          },
+          "paciente_id": {
+            "type": "integer",
+            "maximum": 2147483647.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Paciente Id"
+          },
+          "profissional_id": {
+            "type": "integer",
+            "maximum": 2147483647.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Profissional Id"
+          },
+          "data_hora": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Data Hora"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusConsulta"
+          },
+          "observacao": {
+            "type": "string",
+            "title": "Observacao"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "id",
+          "paciente_id",
+          "profissional_id",
+          "data_hora",
+          "status",
+          "observacao"
+        ],
+        "title": "ConsultaRead"
+      },
+      "ConsultaWrite": {
+        "properties": {
+          "paciente_id": {
+            "type": "integer",
+            "maximum": 2147483647.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Paciente Id"
+          },
+          "profissional_id": {
+            "type": "integer",
+            "maximum": 2147483647.0,
+            "exclusiveMinimum": 0.0,
+            "title": "Profissional Id"
+          },
+          "data_hora": {
+            "type": "string",
+            "format": "date-time",
+            "title": "Data Hora"
+          },
+          "status": {
+            "$ref": "#/components/schemas/StatusConsulta",
+            "default": "agendada"
+          },
+          "observacao": {
+            "type": "string",
+            "maxLength": 500,
+            "title": "Observacao",
+            "default": ""
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "paciente_id",
+          "profissional_id",
+          "data_hora"
+        ],
+        "title": "ConsultaWrite",
+        "description": "Contrato para criacao e substituicao completa (PUT)."
+      },
+      "DesafioRead": {
+        "properties": {
+          "challenge_id": {
+            "type": "string",
+            "title": "Challenge Id"
+          },
+          "mfa_required": {
+            "type": "boolean",
+            "title": "Mfa Required",
+            "default": true
+          },
+          "expires_in": {
+            "type": "integer",
+            "title": "Expires In",
+            "default": 120
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "challenge_id"
+        ],
+        "title": "DesafioRead"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok",
+            "title": "Status"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "status"
+        ],
+        "title": "HealthResponse"
+      },
+      "MFAWrite": {
+        "properties": {
+          "challenge_id": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{32}$",
+            "title": "Challenge Id"
+          },
+          "code": {
+            "type": "string",
+            "pattern": "^[0-9]{6}$",
+            "title": "Code"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "challenge_id",
+          "code"
+        ],
+        "title": "MFAWrite"
+      },
+      "StatusConsulta": {
+        "type": "string",
+        "enum": [
+          "agendada",
+          "cancelada",
+          "realizada"
+        ],
+        "title": "StatusConsulta"
+      },
+      "TokenRead": {
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "title": "Access Token"
+          },
+          "token_type": {
+            "type": "string",
+            "title": "Token Type",
+            "default": "bearer"
+          },
+          "expires_in": {
+            "type": "integer",
+            "title": "Expires In"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "access_token",
+          "expires_in"
+        ],
+        "title": "TokenRead"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    },
+    "securitySchemes": {
+      "OAuth2PasswordBearer": {
+        "type": "oauth2",
+        "flows": {
+          "password": {
+            "scopes": {},
+            "tokenUrl": "auth/token"
+          }
+        }
+      },
+      "JWTBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "JWT obtido no login ou apos confirmar MFA."
+      },
+      "AgendaCookie": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "agenda_session",
+        "description": "Cookie aceito somente no GET /agenda."
+      }
+    }
+  }
+}

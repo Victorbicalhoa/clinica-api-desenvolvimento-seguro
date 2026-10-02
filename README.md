@@ -49,4 +49,3 @@ O gate reprova falhas obrigatórias, evidências ausentes, severidades bloqueant
 - [Rastreabilidade atualizada](docs/Exercicio_13_Rastreabilidade_2026-10-02.json)
 
 Os documentos de cada exercício preservam o estado histórico daquela etapa; a atualização de conformidade informa as correções posteriores. Produção permanece **NO-GO** até validar MFA real, TLS/proxy, proteção do banco, backups/restauração e operação. Os assets Swagger vendorizados mantêm seus arquivos LICENSE/NOTICE.
-

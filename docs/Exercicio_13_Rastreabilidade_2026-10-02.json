@@ -1,0 +1,537 @@
+{
+  "model_id": "TM-CLINICA",
+  "baseline_version": "1.0",
+  "date": "2026-10-02",
+  "production_decision": "NO-GO",
+  "threats": [
+    {
+      "id": "TH-01",
+      "title": "Ausência de identidade confiável",
+      "stride": [
+        "S"
+      ],
+      "misuse": [
+        "MC-01",
+        "MC-03"
+      ],
+      "mitigations": [
+        "MT-01"
+      ],
+      "verification": [
+        "VT-01"
+      ],
+      "boundaries": [
+        "TB1"
+      ],
+      "owasp": "A07:2025",
+      "code": [
+        "app/auth/middleware.py",
+        "app/auth/security.py"
+      ],
+      "tests": [
+        "test_jwt_invalido_negado",
+        "test_mock_entrada_rejeita_duplicatas_extras_e_scope"
+      ],
+      "status": "Parcial: identidade validada; MFA real e operacao pendentes.",
+      "residual": "MFA simulado nao aceito em producao.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/conformidade_2026-10-02/pytest.xml"
+      ],
+      "evidence_limit": "Testes citados validam somente controles implementados; nao encerram riscos operacionais."
+    },
+    {
+      "id": "TH-02",
+      "title": "Acesso a recurso alheio / falta de ownership",
+      "stride": [
+        "I",
+        "T"
+      ],
+      "misuse": [
+        "MC-01",
+        "MC-03"
+      ],
+      "mitigations": [
+        "MT-02",
+        "MT-01"
+      ],
+      "verification": [
+        "VT-02"
+      ],
+      "boundaries": [
+        "TB1"
+      ],
+      "owasp": "A01:2025 / API1:2023",
+      "code": [
+        "app/auth/policies.py"
+      ],
+      "tests": [
+        "test_ownership_crud_listas_agenda_e_vinculos",
+        "test_th02_vinculo_revogado_invalida_acesso_com_jwt_ainda_valido",
+        "test_mock_ownership_consulta_parametrizada_e_404",
+        "test_lab_bola_xss_mesmo_ataque_antes_depois"
+      ],
+      "status": "Mitigada no escopo testado.",
+      "residual": "Revogacao concorrente apos o check nao interrompe necessariamente a requisicao em andamento.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/conformidade_2026-10-02/pytest.xml",
+        "evidencias/conformidade_2026-10-02/lab-before-after.json"
+      ],
+      "evidence_limit": "Comparacao reconstruida somente em testes; HTTP/HTML parser, sem alegacao de execucao Javascript ou falha historica."
+    },
+    {
+      "id": "TH-03",
+      "title": "Atribuição de auditoria pelo cliente",
+      "stride": [
+        "T"
+      ],
+      "misuse": [
+        "MC-02"
+      ],
+      "mitigations": [
+        "MT-04"
+      ],
+      "verification": [
+        "VT-03"
+      ],
+      "boundaries": [
+        "TB1"
+      ],
+      "owasp": "A01:2025",
+      "code": [
+        "app/models/entrada.py",
+        "app/models/consulta.py"
+      ],
+      "tests": [
+        "test_th03_th06_put_nao_aceita_metadados_nem_altera_recurso"
+      ],
+      "status": "Mitigada no escopo testado.",
+      "residual": "Novos contratos precisam manter whitelist/extra forbid.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/conformidade_2026-10-02/pytest.xml"
+      ],
+      "evidence_limit": "Testes citados validam somente controles implementados; nao encerram riscos operacionais."
+    },
+    {
+      "id": "TH-04",
+      "title": "Associação inválida e conflito de agenda",
+      "stride": [
+        "T"
+      ],
+      "misuse": [
+        "MC-02"
+      ],
+      "mitigations": [
+        "MT-05"
+      ],
+      "verification": [
+        "VT-04"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB2"
+      ],
+      "owasp": "A06:2025",
+      "code": [
+        "app/database/session.py",
+        "app/routes/consultas.py"
+      ],
+      "tests": [
+        "test_conflito_concorrente_persistido_em_conexoes_distintas",
+        "test_conflito_cancelamento_transicoes_e_put"
+      ],
+      "status": "Mitigada para a regra aprovada.",
+      "residual": "Unicidade de instante por profissional; duracao/sobreposicao entre horarios diferentes nao modelada.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/conformidade_2026-10-02/pytest.xml"
+      ],
+      "evidence_limit": "Testes citados validam somente controles implementados; nao encerram riscos operacionais."
+    },
+    {
+      "id": "TH-05",
+      "title": "Negação de autoria sem trilha",
+      "stride": [
+        "R"
+      ],
+      "misuse": [
+        "MC-06"
+      ],
+      "mitigations": [
+        "MT-06",
+        "MT-01"
+      ],
+      "verification": [
+        "VT-05"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB2"
+      ],
+      "owasp": "A09:2025",
+      "code": [
+        "app/auth/audit.py",
+        "app/database/session.py"
+      ],
+      "tests": [
+        "test_auditoria_papeis_eventos_redacao_e_append_only",
+        "test_falha_de_auditoria_reverte_mutacao"
+      ],
+      "status": "Parcial: eventos e rollback testados.",
+      "residual": "Host privilegiado pode alterar banco; 413 externo sem evento; SIEM/retencao/alertas pendentes.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/conformidade_2026-10-02/pytest.xml"
+      ],
+      "evidence_limit": "Testes citados validam somente controles implementados; nao encerram riscos operacionais."
+    },
+    {
+      "id": "TH-06",
+      "title": "Exposição de propriedades internas",
+      "stride": [
+        "I"
+      ],
+      "misuse": [
+        "MC-03"
+      ],
+      "mitigations": [
+        "MT-04"
+      ],
+      "verification": [
+        "VT-06"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB3"
+      ],
+      "owasp": "A01:2025",
+      "code": [
+        "app/models/consulta.py",
+        "app/core/openapi.py"
+      ],
+      "tests": [
+        "test_th03_th06_put_nao_aceita_metadados_nem_altera_recurso",
+        "test_openapi_capstone_contrato_seguro",
+        "test_criar_e_buscar_consulta_com_session_mock"
+      ],
+      "status": "Mitigada na API/agenda testadas.",
+      "residual": "Logs e backups externos exigem minimizacao e controle operacional.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/exercicio_13/openapi-audit.json",
+        "evidencias/conformidade_2026-10-02/pytest.xml"
+      ],
+      "evidence_limit": "Testes citados validam somente controles implementados; nao encerram riscos operacionais."
+    },
+    {
+      "id": "TH-07",
+      "title": "XSS persistido por regressão",
+      "stride": [
+        "T",
+        "I",
+        "E"
+      ],
+      "misuse": [
+        "MC-04"
+      ],
+      "mitigations": [
+        "MT-07"
+      ],
+      "verification": [
+        "VT-07"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB3"
+      ],
+      "owasp": "A05:2025; hardening A02/A03/A08:2025",
+      "code": [
+        "app/templates/agenda.html",
+        "app/templates/docs.html",
+        "app/core/network.py"
+      ],
+      "tests": [
+        "test_xss_persistido_renderizado_como_texto",
+        "test_docs_locais_csp_e_integridade_de_assets",
+        "test_lab_bola_xss_mesmo_ataque_antes_depois"
+      ],
+      "status": "Mitigada no contexto testado; ZAP10031 informativo triado.",
+      "residual": "Usabilidade Swagger/CSP nao verificada em navegador; atualizacao de assets e novos contextos HTML exigem revisao.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/exercicio_13/zap.json",
+        "evidencias/exercicio_13/zap-comparison.json",
+        "evidencias/conformidade_2026-10-02/pytest.xml",
+        "evidencias/conformidade_2026-10-02/lab-before-after.json"
+      ],
+      "evidence_limit": "Comparacao reconstruida somente em testes; HTTP/HTML parser, sem alegacao de execucao Javascript ou falha historica."
+    },
+    {
+      "id": "TH-08",
+      "title": "Injeção SQL por consulta insegura futura",
+      "stride": [
+        "T",
+        "I"
+      ],
+      "misuse": [
+        "MC-05"
+      ],
+      "mitigations": [
+        "MT-08"
+      ],
+      "verification": [
+        "VT-08"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB2"
+      ],
+      "owasp": "A05:2025",
+      "code": [
+        "app/auth/policies.py",
+        "app/routes/consultas.py",
+        "app/database/session.py"
+      ],
+      "tests": [
+        "test_payload_sql_separado_do_comando_no_driver"
+      ],
+      "status": "Mitigada nas queries testadas.",
+      "residual": "Preservar parametrizacao e evitar SQL dinamico em extensoes.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/conformidade_2026-10-02/pytest.xml"
+      ],
+      "evidence_limit": "Testes citados validam somente controles implementados; nao encerram riscos operacionais."
+    },
+    {
+      "id": "TH-09",
+      "title": "Esgotamento e contenção SQLite",
+      "stride": [
+        "D"
+      ],
+      "misuse": [
+        "MC-07"
+      ],
+      "mitigations": [
+        "MT-09"
+      ],
+      "verification": [
+        "VT-09"
+      ],
+      "boundaries": [
+        "TB1",
+        "TB2"
+      ],
+      "owasp": "A06:2025; dependencia A03:2025",
+      "code": [
+        "app/core/network.py",
+        "app/auth/middleware.py",
+        "requirements.txt"
+      ],
+      "tests": [
+        "test_login_por_ip_limita_troca_de_username",
+        "test_body_limit_413_preserva_headers_cors"
+      ],
+      "status": "Parcial: quotas, corpo limitado e dependencia atualizada.",
+      "residual": "Conexoes lentas, simultaneidade e volume dependem de infraestrutura.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/exercicio_13/pip-audit.json",
+        "evidencias/conformidade_2026-10-02/pytest.xml",
+        "evidencias/conformidade_2026-10-02/pip-audit-before-upgrade.json",
+        "evidencias/conformidade_2026-10-02/pip-audit.json",
+        "evidencias/conformidade_2026-10-02/pyjwt-wheel.json"
+      ],
+      "evidence_limit": "Testes citados validam somente controles implementados; nao encerram riscos operacionais."
+    },
+    {
+      "id": "TH-10",
+      "title": "Leitura de arquivo SQLite/backup",
+      "stride": [
+        "I"
+      ],
+      "misuse": [
+        "MC-08"
+      ],
+      "mitigations": [
+        "MT-10"
+      ],
+      "verification": [
+        "VT-10"
+      ],
+      "boundaries": [
+        "TB2"
+      ],
+      "owasp": "A01:2025 / A04:2025",
+      "code": [
+        "app/core/config.py",
+        "app/database/session.py"
+      ],
+      "tests": [
+        "test_env_precedencia_e_url_nao_exposta"
+      ],
+      "status": "Aberta operacionalmente.",
+      "residual": "Teste de segredo/configuracao nao comprova ACL, criptografia ou protecao de backups; bloqueia dados reais.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/conformidade_2026-10-02/pytest.xml"
+      ],
+      "evidence_limit": "Testes citados validam somente controles implementados; nao encerram riscos operacionais."
+    },
+    {
+      "id": "TH-11",
+      "title": "Adulteração/perda do armazenamento",
+      "stride": [
+        "T",
+        "R",
+        "D"
+      ],
+      "misuse": [
+        "MC-08"
+      ],
+      "mitigations": [
+        "MT-10",
+        "MT-06"
+      ],
+      "verification": [
+        "VT-11"
+      ],
+      "boundaries": [
+        "TB2"
+      ],
+      "owasp": "A06:2025",
+      "code": [
+        "app/database/session.py"
+      ],
+      "tests": [
+        "test_persistencia_duas_instancias_e_token_antigo",
+        "test_dependencia_rollback_e_fechamento"
+      ],
+      "status": "Parcial: persistencia/transacao testadas, recuperacao nao.",
+      "residual": "Backup/restore, RPO/RTO e migracoes operacionais pendentes.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/conformidade_2026-10-02/pytest.xml"
+      ],
+      "evidence_limit": "Testes citados validam somente controles implementados; nao encerram riscos operacionais."
+    },
+    {
+      "id": "TH-12",
+      "title": "Interceptação/servidor falso sem TLS",
+      "stride": [
+        "S",
+        "T",
+        "I"
+      ],
+      "misuse": [
+        "MC-09"
+      ],
+      "mitigations": [
+        "MT-11"
+      ],
+      "verification": [
+        "VT-12"
+      ],
+      "boundaries": [
+        "TB1"
+      ],
+      "owasp": "A04:2025",
+      "code": [
+        "app/core/network.py"
+      ],
+      "tests": [
+        "test_headers_http_https_e_forwarded_nao_confiavel"
+      ],
+      "status": "Aberta operacionalmente.",
+      "residual": "TestClient HTTPS nao comprova TLS real; proxy/certificado/confianca pendentes.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/conformidade_2026-10-02/pytest.xml"
+      ],
+      "evidence_limit": "Testes citados validam somente controles implementados; nao encerram riscos operacionais."
+    },
+    {
+      "id": "TH-13",
+      "title": "Funções acima do papel permitido",
+      "stride": [
+        "E"
+      ],
+      "misuse": [
+        "MC-01"
+      ],
+      "mitigations": [
+        "MT-03",
+        "MT-01"
+      ],
+      "verification": [
+        "VT-13"
+      ],
+      "boundaries": [
+        "TB1"
+      ],
+      "owasp": "A01:2025 / A07:2025",
+      "code": [
+        "app/auth/dependencies.py",
+        "app/auth/middleware.py"
+      ],
+      "tests": [
+        "test_nao_administrador_impedido_de_acessar_rota_admin",
+        "test_th13_papel_injetado_em_claim_e_header_nao_eleva_privilegio"
+      ],
+      "status": "Mitigada no escopo testado; MFA apenas simulado.",
+      "residual": "Gestao operacional de contas e MFA real obrigatorios.",
+      "evidence": [
+        "evidencias/exercicio_13/pytest.xml",
+        "evidencias/conformidade_2026-10-02/pytest.xml"
+      ],
+      "evidence_limit": "Testes citados validam somente controles implementados; nao encerram riscos operacionais."
+    },
+    {
+      "id": "TH-14",
+      "title": "Confusão de acesso M2M/humano",
+      "stride": [
+        "S",
+        "E",
+        "I"
+      ],
+      "misuse": [
+        "MC-10"
+      ],
+      "mitigations": [
+        "MT-12"
+      ],
+      "verification": [
+        "VT-14"
+      ],
+      "boundaries": [
+        "TB4"
+      ],
+      "owasp": "A01:2025 / A07:2025",
+      "code": [
+        "app/auth/integracao.py",
+        "app/auth/middleware.py",
+        "app/routes/integracoes.py",
+        "app/models/integracao.py",
+        "app/auth/provision_m2m.py"
+      ],
+      "tests": [
+        "test_m2m_disponibilidade_minima_scopes_claims_auditoria",
+        "test_m2m_nao_acessa_rotas_humanas",
+        "test_humano_nao_acessa_m2m",
+        "test_m2m_revogacao_revalida_banco"
+      ],
+      "status": "Implementado e testado localmente: Client Credentials, scope, audience, identidade machine, revogacao e vinculo.",
+      "residual": "TLS, custodia/rotacao operacional de segredos e contrato externo real pendentes; nao autoriza producao.",
+      "evidence": [
+        "evidencias/conformidade_2026-10-02/pytest.xml",
+        "evidencias/conformidade_2026-10-02/m2m-evidence.json",
+        "evidencias/conformidade_2026-10-02/zap.json"
+      ],
+      "evidence_limit": "Testes citados validam somente controles implementados; nao encerram riscos operacionais."
+    }
+  ],
+  "revision": "Conformidade local: M2M, laboratorio reconstruido, mock inicial e PyJWT2.15.0",
+  "conformance_note": "R21 requer evidencia remota GitHub; NO-GO operacional permanece."
+}

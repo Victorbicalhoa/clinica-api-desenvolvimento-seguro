@@ -1,0 +1,21 @@
+{
+  "kind": "reconstructed-test-laboratory; not historical production",
+  "same_identity_and_payload": true,
+  "bola": {
+    "request": "GET /consultas/1",
+    "actor": "prof1",
+    "before_status": 200,
+    "after_status": 404,
+    "before_exposed_other_patient": true,
+    "fix": "app/auth/policies.py: owned_consulta/scope_consultas"
+  },
+  "stored_xss": {
+    "payload": "<script>alert(\"XSS-LAB\")</script>",
+    "persisted_through_real_api": true,
+    "before_script_elements": 1,
+    "after_script_elements": 0,
+    "escaped_after": true,
+    "fix": "app/core/templates.py + app/templates/agenda.html"
+  },
+  "limits": "HTTP/HTML parser; no browser Javascript execution claimed. No vulnerable route in production."
+}

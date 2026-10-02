@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "mode": "passive-authenticated-corpus",
+  "zap_version": "2.17.0",
+  "records_to_scan": 0,
+  "coverage": [
+    {
+      "id": "health",
+      "path": "/health",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "id": "docs",
+      "path": "/docs",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "id": "openapi",
+      "path": "/openapi.json",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "id": "consulta-list",
+      "path": "/consultas",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "id": "consulta-detail",
+      "path": "/consultas/1",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "id": "agenda-prof",
+      "path": "/agenda?dia=2030-10-15",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "id": "agenda-recepcao",
+      "path": "/agenda?dia=2030-10-15",
+      "status": 200,
+      "expected": 200
+    },
+    {
+      "id": "admin-denied",
+      "path": "/admin/painel",
+      "status": 403,
+      "expected": 403
+    },
+    {
+      "id": "unauth-denied",
+      "path": "/consultas",
+      "status": 401,
+      "expected": 401
+    }
+  ],
+  "alerts": [
+    {
+      "path": "/docs",
+      "pluginId": "10109",
+      "alert": "Modern Web Application",
+      "risk": "Informational",
+      "confidence": "Medium",
+      "cweid": "-1",
+      "wascid": "-1",
+      "method": "GET"
+    },
+    {
+      "path": "/agenda",
+      "pluginId": "10031",
+      "alert": "User Controllable HTML Element Attribute (Potential XSS)",
+      "risk": "Informational",
+      "confidence": "Low",
+      "cweid": "20",
+      "wascid": "20",
+      "method": "GET"
+    }
+  ],
+  "limits": "HTTP loopback; sem TLS/spider/active scan/IAST; dados ficticios"
+}

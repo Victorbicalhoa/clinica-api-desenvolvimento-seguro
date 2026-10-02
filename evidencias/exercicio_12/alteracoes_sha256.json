@@ -1,0 +1,67 @@
+[
+  {
+    "path": "tests/test_exercicio12.py",
+    "before_sha256": null,
+    "after_sha256": "e1572e7bdf2851be421d01c9ed5d0b4d3f83bcc3f03975b735a74c8d9bda7aea"
+  },
+  {
+    "path": "tests/test_security_gate.py",
+    "before_sha256": null,
+    "after_sha256": "71bedf8a0a46ddc8c103c8490f4bdae9b02c8b510b0e89263657455c1dea18ad"
+  },
+  {
+    "path": "scripts/fetch_zap.py",
+    "before_sha256": null,
+    "after_sha256": "73fc03e9850e7d310b6758f0e29c05360dfa370f8f0940c910805eb93141c50a"
+  },
+  {
+    "path": "scripts/run_checks.py",
+    "before_sha256": null,
+    "after_sha256": "f96170e4800d6c7ed8ff777e06808dbebb30f578af499794acef004ef5cd288a"
+  },
+  {
+    "path": "scripts/run_dast.py",
+    "before_sha256": null,
+    "after_sha256": "09dd4fb902ba4af37731962943cf1149948fcc7831b5e4daceff7211f20c06fd"
+  },
+  {
+    "path": "scripts/security_gate.py",
+    "before_sha256": null,
+    "after_sha256": "436a0232a6c10211b834b94e508112a2975c01d6a40463836dd76a378f11bbe9"
+  },
+  {
+    "path": "scripts/__init__.py",
+    "before_sha256": null,
+    "after_sha256": "0ca29c46ce22ecb8295f5586015717a0adf8ae19c736465cef04652efaba61b9"
+  },
+  {
+    "path": "security/policy.json",
+    "before_sha256": null,
+    "after_sha256": "f370ff77ea7097533027766a879ec54f05c8ef35ded9f1f5c93375d37e2e4ed8"
+  },
+  {
+    "path": "security/risk-register.json",
+    "before_sha256": null,
+    "after_sha256": "5d5f97c457e60558d48e4800c496fcc7df4ca253e2049f26b5a3a0864f65373d"
+  },
+  {
+    "path": "security/threat-tests.json",
+    "before_sha256": null,
+    "after_sha256": "de275770d4bdfbd844bb92f52b187a1ce9986ef3d0255e5df9418a7b7a79b8aa"
+  },
+  {
+    "path": "requirements.txt",
+    "before_sha256": "c2393b92f38ee00152f76f76a9aff505a12e64af571dccf72bce2259857f61a2",
+    "after_sha256": "ce2aa0e8774f040227805f38d6dd6f8aa88964db6b39272abab34990396f3739"
+  },
+  {
+    "path": "requirements-security.txt",
+    "before_sha256": null,
+    "after_sha256": "02488f201eeba152538f2403ffbc3917d02f489870ae0621faae8f6790684d1d"
+  },
+  {
+    "path": ".github/workflows/security.yml",
+    "before_sha256": null,
+    "after_sha256": "c85425ec7e81b9169ab264aea72df5843958a9a72b615b97864b11c2647d3600"
+  }
+]

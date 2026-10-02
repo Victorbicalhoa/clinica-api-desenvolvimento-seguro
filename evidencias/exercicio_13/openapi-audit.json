@@ -1,0 +1,509 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "OAuth2 password aponta para auth/token",
+      "passed": true
+    },
+    {
+      "check": "Bearer JWT explicito",
+      "passed": true
+    },
+    {
+      "check": "Cookie de agenda documentado",
+      "passed": true
+    },
+    {
+      "check": "GET /agenda autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "GET /agenda cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "GET /agenda 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "GET /agenda 401/403 declarados",
+      "passed": true
+    },
+    {
+      "check": "GET /health autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "GET /health cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "GET /health 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "POST /consultas autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "POST /consultas cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "POST /consultas 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "POST /consultas 401/403 declarados",
+      "passed": true
+    },
+    {
+      "check": "GET /consultas autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "GET /consultas cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "GET /consultas 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "GET /consultas 401/403 declarados",
+      "passed": true
+    },
+    {
+      "check": "GET /consultas/{consulta_id} autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "GET /consultas/{consulta_id} cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "GET /consultas/{consulta_id} 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "GET /consultas/{consulta_id} 401/403 declarados",
+      "passed": true
+    },
+    {
+      "check": "PUT /consultas/{consulta_id} autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "PUT /consultas/{consulta_id} cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "PUT /consultas/{consulta_id} 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "PUT /consultas/{consulta_id} 401/403 declarados",
+      "passed": true
+    },
+    {
+      "check": "DELETE /consultas/{consulta_id} autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "DELETE /consultas/{consulta_id} cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "DELETE /consultas/{consulta_id} 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "DELETE /consultas/{consulta_id} 401/403 declarados",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/token autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/token cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/token 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/mfa autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/mfa cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/mfa 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/logout autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/logout cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/logout 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/logout 401/403 declarados",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/browser-session autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/browser-session cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/browser-session 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "POST /auth/browser-session 401/403 declarados",
+      "passed": true
+    },
+    {
+      "check": "GET /admin/painel autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "GET /admin/painel cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "GET /admin/painel 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "GET /admin/painel 401/403 declarados",
+      "passed": true
+    },
+    {
+      "check": "GET /admin/auditoria autenticacao declarada",
+      "passed": true
+    },
+    {
+      "check": "GET /admin/auditoria cookie so em agenda",
+      "passed": true
+    },
+    {
+      "check": "GET /admin/auditoria 413 declarado",
+      "passed": true
+    },
+    {
+      "check": "GET /admin/auditoria 401/403 declarados",
+      "passed": true
+    },
+    {
+      "check": "operationIds unicos",
+      "passed": true
+    },
+    {
+      "check": "Login requer grant_type username password",
+      "passed": true
+    },
+    {
+      "check": "Login extra forbid",
+      "passed": true
+    },
+    {
+      "check": "Senha writeOnly",
+      "passed": true
+    },
+    {
+      "check": "Login resposta 200",
+      "passed": true
+    },
+    {
+      "check": "Login resposta 202",
+      "passed": true
+    },
+    {
+      "check": "Entrada consulta extra forbid",
+      "passed": true
+    },
+    {
+      "check": "Saida consulta allowlist",
+      "passed": true
+    },
+    {
+      "check": "Persistencia interna nao exposta",
+      "passed": true
+    },
+    {
+      "check": "Sem endpoints debug/fixture",
+      "passed": true
+    },
+    {
+      "check": "/auth/browser-session corpo vazio/extra forbid",
+      "passed": true
+    },
+    {
+      "check": "/auth/logout corpo vazio/extra forbid",
+      "passed": true
+    },
+    {
+      "check": "Logout sem quota geral documentada",
+      "passed": true
+    }
+  ],
+  "operations": [
+    {
+      "operation": "GET /agenda",
+      "security": [
+        {
+          "OAuth2PasswordBearer": []
+        },
+        {
+          "JWTBearer": []
+        },
+        {
+          "AgendaCookie": []
+        }
+      ],
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "GET /health",
+      "security": [],
+      "responses": [
+        "200",
+        "413"
+      ]
+    },
+    {
+      "operation": "POST /consultas",
+      "security": [
+        {
+          "OAuth2PasswordBearer": []
+        },
+        {
+          "JWTBearer": []
+        }
+      ],
+      "responses": [
+        "201",
+        "401",
+        "403",
+        "409",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "GET /consultas",
+      "security": [
+        {
+          "OAuth2PasswordBearer": []
+        },
+        {
+          "JWTBearer": []
+        }
+      ],
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "GET /consultas/{consulta_id}",
+      "security": [
+        {
+          "OAuth2PasswordBearer": []
+        },
+        {
+          "JWTBearer": []
+        }
+      ],
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "PUT /consultas/{consulta_id}",
+      "security": [
+        {
+          "OAuth2PasswordBearer": []
+        },
+        {
+          "JWTBearer": []
+        }
+      ],
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "DELETE /consultas/{consulta_id}",
+      "security": [
+        {
+          "OAuth2PasswordBearer": []
+        },
+        {
+          "JWTBearer": []
+        }
+      ],
+      "responses": [
+        "204",
+        "401",
+        "403",
+        "404",
+        "409",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "POST /auth/token",
+      "security": [],
+      "responses": [
+        "200",
+        "202",
+        "401",
+        "413",
+        "415",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "POST /auth/mfa",
+      "security": [],
+      "responses": [
+        "200",
+        "401",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "POST /auth/logout",
+      "security": [
+        {
+          "OAuth2PasswordBearer": []
+        },
+        {
+          "JWTBearer": []
+        }
+      ],
+      "responses": [
+        "204",
+        "401",
+        "403",
+        "413",
+        "422",
+        "503"
+      ]
+    },
+    {
+      "operation": "POST /auth/browser-session",
+      "security": [
+        {
+          "OAuth2PasswordBearer": []
+        },
+        {
+          "JWTBearer": []
+        }
+      ],
+      "responses": [
+        "204",
+        "401",
+        "403",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "GET /admin/painel",
+      "security": [
+        {
+          "OAuth2PasswordBearer": []
+        },
+        {
+          "JWTBearer": []
+        }
+      ],
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "413",
+        "429",
+        "503"
+      ]
+    },
+    {
+      "operation": "GET /admin/auditoria",
+      "security": [
+        {
+          "OAuth2PasswordBearer": []
+        },
+        {
+          "JWTBearer": []
+        }
+      ],
+      "responses": [
+        "200",
+        "401",
+        "403",
+        "413",
+        "422",
+        "429",
+        "503"
+      ]
+    }
+  ],
+  "limits": "Auditoria estrutural e de contrato; ownership e MFA requerem testes runtime; M2M ausente."
+}

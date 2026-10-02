@@ -1,0 +1,153 @@
+{
+  "cvss_version": "3.1",
+  "note": "Scores de cenarios historicos com premissas explicitas; nao sao achados ativos do scan nem risco residual.",
+  "findings": [
+    {
+      "id": "V08-01",
+      "title": "BOLA GET-only didatica",
+      "threats": [
+        "TH-02"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N",
+      "score": 6.5,
+      "business_impact": "high",
+      "priority": "P0",
+      "assumption": "Profissional autenticado troca ID e le observacoes de terceiros no exemplo sem ownership; nenhuma escrita considerada.",
+      "status": "Cenario didatico; controle existente desde Ex6, nao BOLA aberta atual.",
+      "reason": "Exposicao de informacao de saude de terceiros e quebra de sigilo. Regressao bloqueia independentemente do score."
+    },
+    {
+      "id": "V08-02",
+      "title": "Login sem limite de tentativas",
+      "threats": [
+        "TH-01",
+        "TH-09"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N",
+      "score": 7.4,
+      "business_impact": "high",
+      "priority": "P0",
+      "assumption": "Cenario de adivinhacao bem-sucedida de senha fraca/reutilizada de profissional sem MFA, permitindo ler e adulterar todos os dados sob sua autoridade. AC:H representa dependencia dessa condicao; nao houve tomada de conta demonstrada.",
+      "status": "Limites por conta/IP implementados Ex9/10; risco residual inclui credencial comprometida e MFA apenas administrativo simulado.",
+      "reason": "Confidencialidade e integridade dos registros sob a conta comprometida; score condicionado, ausencia de rate limit isolada nao comprova esse impacto."
+    },
+    {
+      "id": "V08-03",
+      "title": "Ausencia de trilha de auditoria",
+      "threats": [
+        "TH-05"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:N/A:N",
+      "score": 0.0,
+      "business_impact": "high",
+      "priority": "P1",
+      "assumption": "Ausencia de registro nao causa por si so impacto direto CIA pontuavel. CVSS nao mede adequadamente repudiacao/resposta a incidentes.",
+      "status": "Auditoria transacional e append-only implementadas Ex9; exportacao SIEM/retencao operacional pendentes.",
+      "reason": "Investigacao e responsabilizacao comprometidas. Zero tecnico nao significa risco zero; teste obrigatorio bloqueia regressao."
+    },
+    {
+      "id": "V08-04",
+      "title": "Conflitos de agenda e transicoes indevidas",
+      "threats": [
+        "TH-04"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:N/I:L/A:L",
+      "score": 5.4,
+      "business_impact": "high",
+      "priority": "P1",
+      "assumption": "Profissional autorizado cria duplicidades/reabre consultas; integridade limitada e indisponibilidade parcial do agendamento confiavel, sem alegar queda total do servidor.",
+      "status": "Regra aprovada pelo aluno; indice unico parcial e transicoes implementadas Ex9, concorrencia testada.",
+      "reason": "Agenda contraditoria pode interromper atendimentos. Medium tecnico com impacto de negocio alto bloqueia regressao."
+    },
+    {
+      "id": "CVE-2026-53539",
+      "title": "python-multipart: Quadratic-time querystring parsing with semicolon separators causes CPU denial of service",
+      "threats": [
+        "TH-09"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "score": 7.5,
+      "source": "https://github.com/advisories/GHSA-5rvq-cxj2-64vf",
+      "business_impact": "high",
+      "priority": "P0",
+      "assumption": "Parser urlencoded usado por request.form no login; limite de taxa nao limita custo de cada corpo. Sem ataque de carga executado.",
+      "status": "Dependencia atualizada para 0.0.32; rescan PyPI sem vulnerabilidades conhecidas nesta execucao.",
+      "reason": "Parser urlencoded usado por request.form no login; limite de taxa nao limita custo de cada corpo. Sem ataque de carga executado."
+    },
+    {
+      "id": "CVE-2026-53538",
+      "title": "python-multipart: Semicolon treated as querystring field separator enables parameter smuggling",
+      "threats": [
+        "TH-09"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+      "score": 3.7,
+      "source": "https://github.com/advisories/GHSA-6jv3-5f52-599m",
+      "business_impact": "moderate",
+      "priority": "P2",
+      "assumption": "Divergencia de separador de campos; validacao de username/extra forbid reduz possibilidades, sem bypass demonstrado.",
+      "status": "Dependencia atualizada para 0.0.32; rescan PyPI sem vulnerabilidades conhecidas nesta execucao.",
+      "reason": "Divergencia de separador de campos; validacao de username/extra forbid reduz possibilidades, sem bypass demonstrado."
+    },
+    {
+      "id": "CVE-2026-40347",
+      "title": "python-multipart affected by Denial of Service via large multipart preamble or epilogue data",
+      "threats": [
+        "TH-09"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "score": 5.3,
+      "source": "https://github.com/advisories/GHSA-mj87-hwqh-73pj",
+      "business_impact": "moderate",
+      "priority": "P2",
+      "assumption": "Parser multipart afetado, mas login atual aceita somente urlencoded antes de request.form; upload multipart nao implementado.",
+      "status": "Dependencia atualizada para 0.0.32; rescan PyPI sem vulnerabilidades conhecidas nesta execucao.",
+      "reason": "Parser multipart afetado, mas login atual aceita somente urlencoded antes de request.form; upload multipart nao implementado."
+    },
+    {
+      "id": "CVE-2026-42561",
+      "title": "python-multipart has Denial of Service via unbounded multipart part headers",
+      "threats": [
+        "TH-09"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "score": 7.5,
+      "source": "https://github.com/advisories/GHSA-pp6c-gr5w-3c5g",
+      "business_impact": "moderate",
+      "priority": "P1",
+      "assumption": "CVSS publicado alto para parser multipart; caminho multipart nao aceito pela rota atual, revisitar se upload for criado.",
+      "status": "Dependencia atualizada para 0.0.32; rescan PyPI sem vulnerabilidades conhecidas nesta execucao.",
+      "reason": "CVSS publicado alto para parser multipart; caminho multipart nao aceito pela rota atual, revisitar se upload for criado."
+    },
+    {
+      "id": "CVE-2026-53540",
+      "title": "python-multipart: Negative Content-Length in parse_form buffers the entire body in memory",
+      "threats": [
+        "TH-09"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "score": 3.7,
+      "source": "https://github.com/advisories/GHSA-v9pg-7xvm-68hf",
+      "business_impact": "low",
+      "priority": "P2",
+      "assumption": "parse_form direto nao e usado pela aplicacao/FastAPI. Dependencia afetada nao significa explorabilidade desse caminho atual.",
+      "status": "Dependencia atualizada para 0.0.32; rescan PyPI sem vulnerabilidades conhecidas nesta execucao.",
+      "reason": "parse_form direto nao e usado pela aplicacao/FastAPI. Dependencia afetada nao significa explorabilidade desse caminho atual."
+    },
+    {
+      "id": "CVE-2026-101918",
+      "title": "PyJWT: RecursionError em parsing de payload nao verificado",
+      "threats": [
+        "TH-09"
+      ],
+      "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "score": 5.3,
+      "source": "https://github.com/jpadilla/pyjwt/security/advisories/GHSA-42vr-xj54-vc7v",
+      "business_impact": "moderate",
+      "priority": "P1",
+      "assumption": "Aviso abrange parsing anterior a verificacao (verify_signature=False/PyJWKClient). API atual verifica assinatura HS256; nao houve bypass ou queda de processo demonstrados.",
+      "status": "PyJWT2.14.0 atualizado para2.15.0; scan de02/10/2026 sem vulnerabilidades conhecidas.",
+      "reason": "Possivel falha de requisicao prejudica integracao. Corrigir dependencia reportada e exigencia do gate mesmo sem explorabilidade atual comprovada."
+    }
+  ]
+}

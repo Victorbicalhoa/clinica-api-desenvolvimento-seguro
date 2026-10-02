@@ -1,0 +1,13 @@
+{
+  "scope": "Exemplos ficticios realmente cobertos pela suite pytest; consultar pytest.xml. Nenhuma credencial real.",
+  "cases": [
+    {"test": "test_mock_entrada_rejeita_duplicatas_extras_e_scope", "input": "grant_type=password&username=prof1&password=senha-ficticia&username=duplicado", "expected": 422},
+    {"test": "test_mock_entrada_rejeita_duplicatas_extras_e_scope", "input": "grant_type=password&username=prof1&password=senha-ficticia&papel=administrador", "expected": 422},
+    {"test": "test_mock_entrada_rejeita_duplicatas_extras_e_scope", "input": "grant_type=password&username=prof1&password=senha-ficticia&scope=admin", "expected": 422},
+    {"test": "test_mock_ownership_consulta_parametrizada_e_404", "input": {"consulta_id": 123, "usuario_id": 7, "profissional_id": 2, "mock_query_result": null}, "expected": 404},
+    {"test": "test_body_limit_413_preserva_headers_cors", "input_generator": "b'x' * 65537", "path": "/auth/token", "expected": 413},
+    {"test": "test_mock_limite_conta_bytes_reais_sem_confiar_content_length", "chunks": ["12345", "67890"], "configured_limit": 9, "content_length_variants": [null, "1", "999999"], "expected": 413},
+    {"test": "test_xss_persistido_renderizado_como_texto", "field": "observacao", "input": "<script>alert(\"XSS\")</script>", "expected": "Armazenado como dado; HTML escapado, sem elemento script executavel"},
+    {"test": "test_xss_persistido_renderizado_como_texto", "field": "observacao", "input": "<img src=x onerror=\"alert(1)\">", "expected": "Texto escapado; nenhum elemento img ou atributo de evento criado"}
+  ]
+}

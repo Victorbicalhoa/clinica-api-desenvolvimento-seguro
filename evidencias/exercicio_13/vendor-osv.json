@@ -1,0 +1,13 @@
+{
+  "queried_at": "2026-09-25T18:16:48.139296+00:00",
+  "source": "https://api.osv.dev/v1/query",
+  "query": {
+    "package": {
+      "name": "swagger-ui-dist",
+      "ecosystem": "npm"
+    },
+    "version": "5.33.0"
+  },
+  "response": {},
+  "scope": "Consulta manual adicional; pip-audit cobre somente Python."
+}

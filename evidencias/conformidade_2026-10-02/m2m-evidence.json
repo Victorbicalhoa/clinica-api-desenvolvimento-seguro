@@ -1,0 +1,19 @@
+{
+  "fixture": "fictitious-memory-only",
+  "token_status": 200,
+  "token_scope": "disponibilidade:read",
+  "ttl": 300,
+  "availability_status": 200,
+  "availability": [
+    {
+      "profissional_id": 2,
+      "inicio": "2030-10-15T13:00:00Z"
+    },
+    {
+      "profissional_id": 2,
+      "inicio": "2030-10-15T14:00:00Z"
+    }
+  ],
+  "human_route_status": 401,
+  "credentials_exported": false
+}

@@ -1,0 +1,37 @@
+{
+  "date": "2026-09-25",
+  "pytest": {
+    "passed": 190,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "gate_recheck_tests": 39,
+  "openapi_checks": 65,
+  "ruff": "passed",
+  "format": "49 files",
+  "bandit_findings": 0,
+  "pip_audit_vulnerabilities": 0,
+  "vendor_osv_advisories": 0,
+  "zap": {
+    "version": "2.17.0",
+    "responses": 9,
+    "alerts": 2,
+    "remaining_queue": 0
+  },
+  "gate": {
+    "passed": true,
+    "blocked": [],
+    "warnings": [
+      "ZAP 10109: Informational",
+      "ZAP 10031: Informational"
+    ]
+  },
+  "actionlint": "passed",
+  "browser": "unavailable; UI not verified",
+  "production_decision": "NO-GO",
+  "github_remote_run": false,
+  "iast_executed": false,
+  "video_url": null,
+  "zip_created": false
+}

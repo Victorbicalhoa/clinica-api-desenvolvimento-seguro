@@ -1,0 +1,99 @@
+Rubrica	
+Template de Rubrica para ser utilizado com a extensão Rubricator
+
+1. Construir APIs REST com FastAPI aplicando fundamentos de segurança de software
+ O aluno demonstrou que sabe configurar um ambiente virtual Python isolado, subir o servidor uvicorn evidenciando a resposta das rotas e organizar a aplicação em módulos routes, models e database?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+1. Construir APIs REST com FastAPI aplicando fundamentos de segurança de software
+ O aluno demonstrou que sabe usar response_model do Pydantic para controlar exatamente quais campos são expostos ao cliente da API?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+1. Construir APIs REST com FastAPI aplicando fundamentos de segurança de software
+ O aluno demonstrou que sabe justificar tecnicamente o risco de exposição de dados sensíveis quando response_model não é definido?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+1. Construir APIs REST com FastAPI aplicando fundamentos de segurança de software
+ O aluno demonstrou que sabe integrar templates Jinja2 com herança e auto-escape, prevenindo XSS na renderização de conteúdo de usuário?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+1. Construir APIs REST com FastAPI aplicando fundamentos de segurança de software
+ O aluno demonstrou que sabe aplicar a tríade CIA e mapear frameworks de referência (OWASP, NIST SSDF, MITRE) a controles concretos da própria aplicação?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+1. Construir APIs REST com FastAPI aplicando fundamentos de segurança de software
+ O aluno demonstrou que sabe construir um DFD básico identificando trust boundaries e fluxos de dados sensíveis?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+2. Implementar threat modeling STRIDE e autenticação JWT em APIs FastAPI
+ O aluno demonstrou que sabe elaborar misuse cases relacionados a vetores de ataque reais da própria aplicação?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+2. Implementar threat modeling STRIDE e autenticação JWT em APIs FastAPI
+ O aluno demonstrou que sabe aplicar STRIDE e construir um threat model completo, com ativos, superfícies de ataque e mitigações rastreáveis?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+2. Implementar threat modeling STRIDE e autenticação JWT em APIs FastAPI
+ O aluno demonstrou que sabe identificar fronteiras de segurança e vetores de ataque nos três eixos de segurança de APIs?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+2. Implementar threat modeling STRIDE e autenticação JWT em APIs FastAPI
+ O aluno demonstrou que sabe implementar autenticação OAuth2PasswordBearer com hashing bcrypt e proteger rotas com verificação de ownership?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+2. Implementar threat modeling STRIDE e autenticação JWT em APIs FastAPI
+ O aluno demonstrou que sabe implementar JWT com expiração de sessão, MFA simulado e justificar a escolha entre RBAC, ABAC e autorização por recurso?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+2. Implementar threat modeling STRIDE e autenticação JWT em APIs FastAPI
+ O aluno demonstrou que sabe selecionar o fluxo OAuth 2.0 adequado e configurar escopos e claims JWT diferenciando clientes humanos e M2M?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+3. Analisar vulnerabilidades OWASP Top 10 aplicando controles defensivos em APIs REST
+ O aluno demonstrou que sabe identificar padrões vulneráveis do OWASP Top 10 lendo código FastAPI, cobrindo pelo menos três categorias distintas?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+3. Analisar vulnerabilidades OWASP Top 10 aplicando controles defensivos em APIs REST
+ O aluno demonstrou que sabe identificar e corrigir uma falha de BOLA implementando verificação de ownership de forma centralizada?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+3. Analisar vulnerabilidades OWASP Top 10 aplicando controles defensivos em APIs REST
+ O aluno demonstrou que sabe implementar validação por whitelist e regex, e configurar Pydantic com extra='forbid' para prevenir injeção e dados não declarados?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+3. Analisar vulnerabilidades OWASP Top 10 aplicando controles defensivos em APIs REST
+ O aluno demonstrou que sabe corrigir uma falha de XSS stored aplicando output encoding com auto-escape do Jinja2?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+3. Analisar vulnerabilidades OWASP Top 10 aplicando controles defensivos em APIs REST
+ O aluno demonstrou que sabe configurar CORS com allowlist, cabeçalhos de segurança HSTS, X-Frame-Options e X-Content-Type-Options, e rate limiting diferenciado?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+3. Analisar vulnerabilidades OWASP Top 10 aplicando controles defensivos em APIs REST
+ O aluno demonstrou que sabe migrar a persistência para SQLModel com queries parametrizadas e gerenciar credenciais via BaseSettings e .env, sem hardcoding?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+4. Implementar pipeline DevSecOps com security gates, OWASP ZAP e testes automatizados
+ O aluno demonstrou que sabe classificar, com justificativa escrita amarrada ao próprio pipeline construído, a fase do SDLC em que cada tipo de ferramenta de análise de segurança (estática, dinâmica, de dependências, interativa) deveria atuar?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+4. Implementar pipeline DevSecOps com security gates, OWASP ZAP e testes automatizados
+ O aluno demonstrou que sabe priorizar vulnerabilidades com critérios CVSS e impacto de negócio?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+4. Implementar pipeline DevSecOps com security gates, OWASP ZAP e testes automatizados
+ O aluno demonstrou que sabe implementar, em GitHub Actions, um security gate cujo critério de bloqueio foi definido e justificado pelo próprio aluno, impedindo merge de código acima desse critério de severidade?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+4. Implementar pipeline DevSecOps com security gates, OWASP ZAP e testes automatizados
+ O aluno demonstrou que sabe criar uma estratégia de testes de segurança rastreável ao threat model do Exercício 4, expandindo em pytest o teste de autorização iniciado no Exercício 6 para cobrir outros vetores de ataque mapeados?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+4. Implementar pipeline DevSecOps com security gates, OWASP ZAP e testes automatizados
+ O aluno demonstrou que sabe executar e interpretar um scan passivo OWASP ZAP contra a própria aplicação, correlacionando cada finding à categoria OWASP correspondente e à correção aplicada no relatório de rastreabilidade, incluindo o risco residual identificado e a justificativa sobre bloquear ou não o deploy?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica
+4. Implementar pipeline DevSecOps com security gates, OWASP ZAP e testes automatizados
+ O aluno demonstrou que sabe escrever testes unitários pytest com mocking, cobrindo o teste inicial do Exercício 1 e os demais pontos de entrada e autorização da aplicação, além de auditar a especificação OpenAPI identificando falhas de design de segurança?	
+Não demonstrou o item de rubrica
+Demonstrou o item de rubrica

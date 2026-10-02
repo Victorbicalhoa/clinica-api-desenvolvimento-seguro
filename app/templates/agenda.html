@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Agenda de {{ dia.strftime('%d/%m/%Y') }} · Agenda clínica{% endblock %}
+{% block content %}
+<section class="heading">
+  <p class="eyebrow">ATENDIMENTO / AGENDA</p>
+  <h1>Agenda de consultas</h1>
+  <p>Consulte os horários e as observações operacionais do dia. Horários em UTC.</p>
+</section>
+<section class="panel" aria-label="Consultas do dia">
+  <div class="toolbar">
+    <div><h2>{{ dia.strftime('%d/%m/%Y') }}</h2><p>{{ consultas|length }} consulta(s) nesta página</p></div>
+    <form method="get" action="{{ url_for('agenda') }}">
+      <label for="dia">Data da agenda</label>
+      <div class="filter"><input id="dia" name="dia" type="date" value="{{ dia.isoformat() }}" required><button type="submit">Consultar</button></div>
+    </form>
+  </div>
+  {% if consultas %}
+  <div class="table-wrap">
+    <table>
+      <caption class="sr-only">Consultas de {{ dia.strftime('%d/%m/%Y') }}, em UTC</caption>
+      <thead><tr><th scope="col">Horário UTC</th><th scope="col">Consulta</th><th scope="col">Paciente</th><th scope="col">Profissional</th><th scope="col">Status</th><th scope="col">Observação operacional</th></tr></thead>
+      <tbody>
+      {% for consulta in consultas %}
+        <tr>
+          <td class="hour">{{ consulta.data_hora.strftime('%H:%M') }}</td>
+          <td>#{{ consulta.id }}</td>
+          <td>#{{ consulta.paciente_id }}</td>
+          <td>#{{ consulta.profissional_id }}</td>
+          <td><span class="status">{{ consulta.status.value }}</span></td>
+          <td class="note">{{ consulta.observacao or 'Sem observações' }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="empty"><h3>Nenhuma consulta nesta página</h3><p>Escolha outra data ou retorne à página anterior, se disponível.</p></div>
+  {% endif %}
+  <nav class="pagination" aria-label="Paginação">
+    {% if pagina > 1 %}<a href="{{ url_for('agenda') }}?dia={{ dia.isoformat() }}&amp;pagina={{ pagina - 1 }}">← Anterior</a>{% endif %}
+    <span>Página {{ pagina }}</span>
+    {% if tem_proxima %}<a href="{{ url_for('agenda') }}?dia={{ dia.isoformat() }}&amp;pagina={{ pagina + 1 }}">Próxima →</a>{% endif %}
+  </nav>
+</section>
+{% endblock %}

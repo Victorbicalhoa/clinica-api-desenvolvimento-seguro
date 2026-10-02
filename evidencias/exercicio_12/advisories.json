@@ -1,0 +1,117 @@
+[
+  {
+    "ghsa_id": "GHSA-5rvq-cxj2-64vf",
+    "cve_id": "CVE-2026-53539",
+    "summary": "python-multipart: Quadratic-time querystring parsing with semicolon separators causes CPU denial of service",
+    "severity": "high",
+    "cvss": {
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "score": 7.5
+    },
+    "cvss_severities": {
+      "cvss_v3": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 7.5
+      },
+      "cvss_v4": {
+        "vector_string": null,
+        "score": 0.0
+      }
+    },
+    "html_url": "https://github.com/advisories/GHSA-5rvq-cxj2-64vf",
+    "published_at": "2026-06-15T20:24:09Z",
+    "updated_at": "2026-06-15T20:24:10Z"
+  },
+  {
+    "ghsa_id": "GHSA-6jv3-5f52-599m",
+    "cve_id": "CVE-2026-53538",
+    "summary": "python-multipart: Semicolon treated as querystring field separator enables parameter smuggling",
+    "severity": "low",
+    "cvss": {
+      "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+      "score": 3.7
+    },
+    "cvss_severities": {
+      "cvss_v3": {
+        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N",
+        "score": 3.7
+      },
+      "cvss_v4": {
+        "vector_string": null,
+        "score": 0.0
+      }
+    },
+    "html_url": "https://github.com/advisories/GHSA-6jv3-5f52-599m",
+    "published_at": "2026-06-15T20:22:25Z",
+    "updated_at": "2026-06-15T20:22:27Z"
+  },
+  {
+    "ghsa_id": "GHSA-mj87-hwqh-73pj",
+    "cve_id": "CVE-2026-40347",
+    "summary": "python-multipart affected by Denial of Service via large multipart preamble or epilogue data",
+    "severity": "medium",
+    "cvss": {
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "score": 5.3
+    },
+    "cvss_severities": {
+      "cvss_v3": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "score": 5.3
+      },
+      "cvss_v4": {
+        "vector_string": null,
+        "score": 0.0
+      }
+    },
+    "html_url": "https://github.com/advisories/GHSA-mj87-hwqh-73pj",
+    "published_at": "2026-04-15T19:45:44Z",
+    "updated_at": "2026-04-24T20:51:12Z"
+  },
+  {
+    "ghsa_id": "GHSA-pp6c-gr5w-3c5g",
+    "cve_id": "CVE-2026-42561",
+    "summary": "python-multipart has Denial of Service via unbounded multipart part headers",
+    "severity": "high",
+    "cvss": {
+      "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+      "score": 7.5
+    },
+    "cvss_severities": {
+      "cvss_v3": {
+        "vector_string": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+        "score": 7.5
+      },
+      "cvss_v4": {
+        "vector_string": null,
+        "score": 0.0
+      }
+    },
+    "html_url": "https://github.com/advisories/GHSA-pp6c-gr5w-3c5g",
+    "published_at": "2026-05-06T21:56:14Z",
+    "updated_at": "2026-05-14T20:42:20Z"
+  },
+  {
+    "ghsa_id": "GHSA-v9pg-7xvm-68hf",
+    "cve_id": "CVE-2026-53540",
+    "summary": "python-multipart: Negative Content-Length in parse_form buffers the entire body in memory",
+    "severity": "low",
+    "cvss": {
+      "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+      "score": 3.7
+    },
+    "cvss_severities": {
+      "cvss_v3": {
+        "vector_string": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:L",
+        "score": 3.7
+      },
+      "cvss_v4": {
+        "vector_string": null,
+        "score": 0.0
+      }
+    },
+    "html_url": "https://github.com/advisories/GHSA-v9pg-7xvm-68hf",
+    "published_at": "2026-06-15T20:23:45Z",
+    "updated_at": "2026-06-15T20:23:45Z"
+  }
+]

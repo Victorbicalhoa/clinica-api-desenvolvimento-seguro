@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-02",
+  "pytest_passed": 226,
+  "openapi_checks": 74,
+  "execution": {
+    "ruff": 0,
+    "format": 0,
+    "pytest": 0,
+    "bandit": 1,
+    "pip_audit": 0
+  },
+  "zap_responses": 12,
+  "zap_informational": 2,
+  "bandit_low": 2,
+  "bandit_triage": "B105 token_use human/machine: public discriminator strings, not secrets",
+  "sca_vulnerabilities": 0,
+  "gate": {
+    "passed": true,
+    "blocked": [],
+    "warnings": [
+      "Bandit B105: LOW",
+      "Bandit B105: LOW",
+      "ZAP 10109: Informational",
+      "ZAP 10031: Informational"
+    ]
+  },
+  "actionlint_exit": 0,
+  "limitations": [
+    "No remote GitHub run or branch protection evidence",
+    "No browser screenshots or personal video generated",
+    "ZAP passive loopback corpus only; NO-GO production"
+  ]
+}

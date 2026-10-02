@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "blocked": [],
+  "warnings": [
+    "Bandit B105: LOW",
+    "Bandit B105: LOW",
+    "ZAP 10109: Informational",
+    "ZAP 10031: Informational"
+  ]
+}
