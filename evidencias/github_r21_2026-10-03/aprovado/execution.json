@@ -1,0 +1,7 @@
+{
+  "ruff": 0,
+  "format": 0,
+  "pytest": 0,
+  "bandit": 1,
+  "pip_audit": 0
+}

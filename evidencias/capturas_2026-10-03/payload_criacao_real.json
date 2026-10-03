@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-03",
+  "request": "POST /consultas",
+  "status": 201,
+  "payload": {
+    "paciente_id": 9001,
+    "profissional_id": 901,
+    "data_hora": "2026-10-04T14:00:00+00:00",
+    "status": "agendada",
+    "observacao": "<script>alert(\"XSS-AT\")</script>"
+  },
+  "response": {
+    "id": 1,
+    "paciente_id": 9001,
+    "profissional_id": 901,
+    "data_hora": "2026-10-04T14:00:00Z",
+    "status": "agendada",
+    "observacao": "<script>alert(\"XSS-AT\")</script>"
+  },
+  "fixture": "isolated fictitious database, no credentials exported"
+}

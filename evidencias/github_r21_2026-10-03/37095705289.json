@@ -1,0 +1,10 @@
+{
+  "id": 37095705289,
+  "html_url": "https://github.com/Victorbicalhoa/clinica-api-desenvolvimento-seguro/actions/runs/37095705289",
+  "head_sha": "7ea46644201376cc5a1b5fe25edb7d9667b7ef47",
+  "event": "pull_request",
+  "status": "completed",
+  "conclusion": "failure",
+  "created_at": "2026-10-03T04:11:24Z",
+  "updated_at": "2026-10-03T04:13:37Z"
+}

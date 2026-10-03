@@ -1,0 +1,199 @@
+- link "Skip to content":
+  - /url: "#start-of-content"
+- banner "Global navigation menu":
+  - button "Open menu":
+  - link "Homepage (g then d)":
+    - /url: /
+  - navigation "Breadcrumbs":
+    - list:
+      - button "1 more breadcrumb items":
+      - link "clinica-api-desenvolvimento-seguro":
+        - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro
+      - button "Switch repository (alt shift r)":
+  - button "Open quick search dialog, type / to search (forward slash)":
+  - link "You have unread notifications (g then n)":
+    - /url: /notifications
+  - button "Open user navigation menu":
+    - img "Victor Bicalho"
+  - heading "Repository navigation" [level=2]
+  - navigation "Repository":
+    - list:
+      - link "Code":
+        - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro
+        - generic: Code
+      - link "Issues":
+        - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/issues
+        - generic: Issues
+      - link "Pull requests (1)":
+        - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/pulls
+        - generic: Pull requests
+        - generic: "1"
+        - generic: (1)
+      - link "Agents":
+        - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/agents?author=Victorbicalhoa
+        - generic: Agents
+    - button "More items, including current item":
+      - text: More
+      - generic: items
+- main:
+  - 'heading "Settings: Victorbicalhoa/clinica-api-desenvolvimento-seguro" [level=1]'
+  - navigation "General settings":
+    - list:
+      - link "General":
+        - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/settings
+        - generic: General
+      - heading "Access" [level=2]
+      - list "Access":
+        - link "Collaborators":
+          - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/settings/access
+          - generic: Collaborators
+        - button "Moderation":
+          - generic: Moderation
+      - heading "Code, planning, and automation" [level=2]
+      - list "Code, planning, and automation":
+        - button "Rulesets":
+          - generic: Rulesets
+        - link "Branches":
+          - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/settings/branches
+          - generic: Branches
+        - link "Tags":
+          - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/settings/tag_protection
+          - generic: Tags
+        - button "Actions":
+          - generic: Actions
+        - link "Webhooks":
+          - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/settings/hooks
+          - generic: Webhooks
+        - button "Copilot":
+          - generic: Copilot
+        - button "Planning":
+          - generic: Planning
+        - link "Environments":
+          - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/settings/environments
+          - generic: Environments
+        - link "Codespaces":
+          - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/settings/codespaces
+          - generic: Codespaces
+        - link "Pages":
+          - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/settings/pages
+          - generic: Pages
+      - heading "Security and quality" [level=2]
+      - list "Security and quality":
+        - link "Advanced Security":
+          - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/settings/security_analysis
+          - generic: Advanced Security
+        - link "Deploy keys":
+          - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/settings/keys
+          - generic: Deploy keys
+        - button "Secrets and variables":
+          - generic: Secrets and variables
+      - heading "Integrations" [level=2]
+      - list "Integrations":
+        - link "GitHub Apps":
+          - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/settings/installations
+          - generic: GitHub Apps
+        - link "Email notifications":
+          - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/settings/notifications
+          - generic: Email notifications
+  - heading "Branch protection rule" [level=2]
+  - complementary "Rulesets are the preferred path":
+    - heading "Level up your branch protections with Repository Rules" [level=1]
+    - paragraph:
+      - text: Rulesets are the recommended replacement for classic branch protections. They support rule layering, evaluate mode, and organization-wide policies.
+      - link "Learn more about Rulesets.":
+        - /url: https://docs.github.com/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets
+  - heading "Branch name pattern*" [level=3]:
+    - term: Branch name pattern*
+    - definition
+  - textbox "Branch name pattern*": main
+  - strong: Applies to 1 branch
+  - generic: main
+  - heading "Protect matching branches" [level=3]
+  - checkbox "Require a pull request before merging" [checked]
+  - text: Require a pull request before merging
+  - generic: When enabled, all commits must be made to a non-protected branch and submitted via a pull request before they can be merged into a branch that matches this rule.
+  - checkbox "Require approvals"
+  - text: Require approvals
+  - generic: When enabled, pull requests targeting a matching branch require a number of approvals and no changes requested before they can be merged.
+  - checkbox "Dismiss stale pull request approvals when new commits are pushed"
+  - text: Dismiss stale pull request approvals when new commits are pushed
+  - generic: New reviewable commits pushed to a matching branch will dismiss pull request review approvals.
+  - checkbox "Require review from Code Owners"
+  - text: Require review from Code Owners
+  - generic: Require an approved review in pull requests including files with a designated code owner.
+  - checkbox "Require approval of the most recent reviewable push"
+  - text: Require approval of the most recent reviewable push
+  - generic: Whether the most recent reviewable push must be approved by someone other than the person who pushed it.
+  - checkbox "Require status checks to pass before merging" [checked]
+  - text: Require status checks to pass before merging
+  - text: Choose which
+  - link "status checks":
+    - /url: https://docs.github.com/rest/commits/statuses
+  - text: must pass before branches can be merged into a branch that matches this rule. When enabled, commits must first be pushed to another branch, then merged or pushed directly to a branch that matches this rule after status checks have passed.
+  - checkbox "Require branches to be up to date before merging" [checked]
+  - text: Require branches to be up to date before merging
+  - generic: This ensures pull requests targeting a matching branch have been tested with the latest code. This setting will not take effect unless at least one status check is enabled (see below).
+  - combobox "Search for status checks in the last week for this repository"
+  - generic: Search for status checks in the last week for this repository
+  - generic: Status checks that are required
+  - list:
+    - generic: security-gate
+    - group "Accept updates from":
+      - button "@github-actions GitHub Actions":
+        - img "@github-actions"
+        - text: GitHub Actions
+    - button "Remove security-gate as a required status check":
+  - checkbox "Require conversation resolution before merging"
+  - text: Require conversation resolution before merging
+  - text: When enabled, all conversations on code must be resolved before a pull request can be merged into a branch that matches this rule.
+  - link "Learn more about requiring conversation completion before merging":
+    - /url: https://docs.github.com/github/administering-a-repository/defining-the-mergeability-of-pull-requests/about-protected-branches#require-conversation-resolution-before-merging
+  - text: .
+  - checkbox "Require signed commits"
+  - text: Require signed commits
+  - generic: Commits pushed to matching branches must have verified signatures.
+  - checkbox "Require linear history"
+  - text: Require linear history
+  - generic: Prevent merge commits from being pushed to matching branches.
+  - checkbox "Require deployments to succeed before merging"
+  - text: Require deployments to succeed before merging
+  - generic: Choose which environments must be successfully deployed to before branches can be merged into a branch that matches this rule.
+  - checkbox "Lock branch"
+  - text: Lock branch
+  - generic: Branch is read-only. Users cannot push to the branch.
+  - checkbox "Do not allow bypassing the above settings" [checked]
+  - text: Do not allow bypassing the above settings
+  - generic: The above settings will apply to administrators and custom roles with the "bypass branch protections" permission.
+  - heading "Rules applied to everyone including administrators" [level=3]
+  - checkbox "Allow force pushes"
+  - text: Allow force pushes
+  - paragraph: Permit force pushes for all users with push access.
+  - checkbox "Allow deletions"
+  - text: Allow deletions
+  - generic: Allow users with push access to delete matching branches.
+  - separator
+  - button "Save changes"
+- contentinfo:
+  - heading "Footer" [level=2]
+  - link "GitHub Homepage":
+    - /url: https://github.com
+  - generic: © 2026 GitHub, Inc.
+  - navigation "Footer":
+    - heading "Footer navigation" [level=3]
+    - list "Footer navigation":
+      - link "Terms":
+        - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+      - link "Privacy":
+        - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+      - link "Security":
+        - /url: https://github.com/security
+      - link "Status":
+        - /url: https://www.githubstatus.com/
+      - link "Community":
+        - /url: https://github.community/
+      - link "Docs":
+        - /url: https://docs.github.com/
+      - link "Contact":
+        - /url: https://support.github.com?tags=dotcom-footer
+      - button "Manage cookies"
+      - button "Do not share my personal information"
