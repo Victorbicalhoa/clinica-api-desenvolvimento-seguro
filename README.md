@@ -41,15 +41,12 @@ O gate reprova falhas obrigatórias, evidências ausentes, severidades bloqueant
 
 ## Documentação
 
-- [Decisões e estado de conformidade](docs/Correcoes_Conformidade_2026-10-02.md)
-- [Threat model STRIDE](docs/exercicio_04.md)
-- [Integração M2M](docs/exercicio_07.md)
-- [Pipeline, CVSS e impacto de negócio](docs/exercicio_12.md)
+Comece pelo [índice técnico](docs/README.md), que reúne os relatórios dos 13 exercícios, arquitetura, threat model, rastreabilidade, rubricas e evidências.
+
+- [Matriz requisito → implementação → evidência](docs/Matriz_Rubricas_AT_2026-10-03.csv)
+- [Prova do security gate e bloqueio de merge](docs/Prova_GitHub_R21_2026-10-03.md)
 - [Capstone e riscos residuais](docs/exercicio_13.md)
-- [Rastreabilidade atualizada](docs/Exercicio_13_Rastreabilidade_2026-10-02.json)
+- [Roteiro executável do vídeo](docs/Roteiro_Final_Executavel_2026-10-03.md)
+- [Metodologia, assistência e limites](docs/metodologia.md)
 
-Os documentos de cada exercício preservam o estado histórico daquela etapa; a atualização de conformidade informa as correções posteriores. Produção permanece **NO-GO** até validar MFA real, TLS/proxy, proteção do banco, backups/restauração e operação. Os assets Swagger vendorizados mantêm seus arquivos LICENSE/NOTICE.
-
-## Evidências e roteiro atualizados em 03/10/2026
-
-Consulte o [roteiro executável do vídeo](docs/Roteiro_Final_Executavel_2026-10-03.md), a [prova do gate e proteção de merge](docs/Prova_GitHub_R21_2026-10-03.md) e a [matriz atual](docs/Matriz_Rubricas_AT_2026-10-03.csv). A prova inclui falha controlada, merge bloqueado e aprovação após correção. Relatórios anteriores permanecem como histórico. A matriz registra evidências acadêmicas; não representa autorização de produção nem substitui o vídeo pessoal.
+Os relatórios por exercício registram as respectivas etapas; o índice indica os complementos e resultados atuais. Produção permanece **NO-GO** até validar os controles operacionais documentados. Os assets Swagger vendorizados mantêm seus arquivos LICENSE/NOTICE. Vídeo pessoal, link e pacote final são requisitos separados da documentação técnica.

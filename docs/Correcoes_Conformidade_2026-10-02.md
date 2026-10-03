@@ -1,6 +1,6 @@
 # Correções de conformidade — 02/10/2026
 
-Este relatório substitui os pareceres de pendência da inspeção de 30/09 para os itens corrigidos. Os relatórios anteriores permanecem como evidência histórica. Critérios: enunciados e 24 perguntas literais da rubrica. Conforme orientação do aluno, o repositório do professor é somente referência comparativa; Python 3.12 e diferenças de organização não constituem reprovação adicional. Não foi exigido copiar o starter ou implementar CRUD de pacientes não solicitado.
+Este relatório registra as correções e a rodada de validação de 02/10. O [índice](README.md) apresenta os resultados posteriores. Os registros intermediários de revisão foram preservados localmente. Critérios: enunciados e 24 perguntas literais da rubrica. Conforme orientação do aluno, o repositório do professor é somente referência comparativa; Python 3.12 e diferenças de organização não constituem reprovação adicional. Não foi exigido copiar o starter ou implementar CRUD de pacientes não solicitado.
 
 ## Lacunas corrigidas
 
@@ -51,8 +51,8 @@ O SCA foi repetido após uma falha de rede; a falha não foi tratada como aprova
 
 Os achados históricos Medium de CSP/SRI do Ex12 permanecem correlacionados às correções no relatório do Ex13. Esta rodada amplia o corpus com disponibilidade M2M e as duas negações cruzadas, sem ampliar a afirmação para scan ativo, TLS, browser ou infraestrutura.
 
-## Pendência que requer GitHub
+## Complemento posterior: execução no GitHub
 
-**R21 permanece parcial** enquanto não existir execução do workflow em repositório próprio e regra que exija `security-gate` para merge. Validação local e YAML não comprovam bloqueio remoto. O roteiro `Comprovar_Gate_GitHub.md` descreve a conclusão e a evidência necessária. Nenhuma publicação ou alteração de repositório externo foi realizada.
+Em 03/10/2026, o workflow foi executado no repositório próprio, a proteção de main foi verificada e o merge foi bloqueado na prova negativa e liberado após a correção. Consulte a [prova R21](Prova_GitHub_R21_2026-10-03.md), que complementa esta rodada local, e a [matriz atual](Matriz_Rubricas_AT_2026-10-03.csv).
 
-As outras 23 perguntas possuem implementação/documentação/evidência local suficiente, sujeitas à avaliação do professor. A entrega completa ainda requer as capturas reais, vídeo pessoal de até cinco minutos no YouTube não listado e o ZIP final `Hebert_almeida_DR2_AT.ZIP`. O roteiro não substitui a gravação; o ZIP continua reservado para o final.
+Vídeo pessoal, link do YouTube não listado e ZIP final são requisitos separados. Produção permanece NO-GO conforme o capstone.

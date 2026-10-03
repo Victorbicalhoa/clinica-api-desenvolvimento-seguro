@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 1 — Fundação da API de agendamento
 
 ## Objetivo e resultado
@@ -66,13 +68,12 @@ O CRUD também foi exercitado por HTTP com Uvicorn em 127.0.0.1:8765, usando ban
 
 Dois avisos de depreciação vêm das dependências Starlette/httpx e Starlette/AnyIO. Não houve falha nos testes. Os avisos foram preservados no log; não foram ocultados.
 
-## Revisão Astra
-Modelo: gpt-6-astra, revisão independente em modo somente leitura.
-Dois achados foram corrigidos antes da aprovação:
+## Correções verificadas
+Dois casos extremos receberam correções e testes de regressão:
 - offset excessivo causava erro 500: limite superior e teste de regressão;
 - conversão de data extrema para UTC causava OverflowError: captura e ValueError, resultando em 422, com testes para os extremos inferior e superior.
 
-Parecer final: aprovado para o escopo do Exercício 1, sem achados pendentes no código. O revisor confirmou os 23 testes aprovados.
+O resultado registrado nesta etapa foi de 23 testes aprovados; as execuções posteriores estão no índice de documentação.
 
 ## Rastreabilidade
 | Requisito | Implementação | Evidência |
@@ -89,13 +90,6 @@ Ainda não há login, verificação de ownership, regras por papel, validação 
 DELETE realiza exclusão física, definida aqui para demonstrar CRUD. Política de retenção, cancelamento e trilha de auditoria deverão ser revistas com os requisitos posteriores.
 
 O print do Swagger permanece pendente: a documentação foi aberta e suas rotas verificadas no navegador, mas a ferramenta retornou timeout/falha ao capturar a imagem. Não foi produzido um print artificial. Os registros HTTP, testes, esquema OpenAPI e ambiente foram salvos normalmente.
-
-## Trecho de vídeo sugerido — cerca de 25 segundos
-Mostrar rapidamente as pastas app/routes, app/models e app/database; depois o Swagger com POST /consultas e a saída do pytest.
-
-“Comecei isolando as dependências em um ambiente virtual. Separei as rotas, os modelos e o acesso ao banco, e implementei o CRUD de consultas com APIRouter. Os dados são validados com Pydantic e persistidos pelo SQLModel. Os testes usam um banco em memória separado e verificam tanto o caminho de sucesso quanto entradas inválidas.”
-
-Este trecho serve como introdução do vídeo de até cinco minutos. Reservar a maior parte do tempo para autorização, security gate do Exercício 12 e decisões do capstone no Exercício 13.
 
 ## Referências técnicas
 - [FastAPI: aplicações com múltiplos arquivos](https://fastapi.tiangolo.com/tutorial/bigger-applications/)

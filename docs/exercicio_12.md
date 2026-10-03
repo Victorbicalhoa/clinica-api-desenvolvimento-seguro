@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 12 — Pipeline DevSecOps e auditoria automatizada
 
 **Hebert Almeida — Desenvolvimento Seguro de Aplicações Web**  
@@ -95,7 +97,7 @@ São nove casos novos de segurança da aplicação, além dos testes do gate e r
 
 ## Segurança e reprodução do workflow
 
-**Resultado final local:** 175 testes aprovados (127 anteriores, nove novos de segurança da aplicação e 39 de gate/CVSS/inventário), com dois avisos de depreciação preexistentes. Ruff e formatação de 45 arquivos Python aprovados; Bandit sem findings; pip-audit sem vulnerabilidades conhecidas no inventário atualizado; ZAP com nove respostas e sete alertas preservados; gate aprovado com as revisões Medium descritas. `actionlint` 1.7.12 validou o YAML sem erros e `pip check` não encontrou dependências quebradas. O replay do SCA histórico foi bloqueado. Revisão Astra final aprovada, sem bloqueadores técnicos.
+**Resultado final local:** 175 testes aprovados (127 anteriores, nove novos de segurança da aplicação e 39 de gate/CVSS/inventário), com dois avisos de depreciação preexistentes. Ruff e formatação de 45 arquivos Python aprovados; Bandit sem findings; pip-audit sem vulnerabilidades conhecidas no inventário atualizado; ZAP com nove respostas e sete alertas preservados; gate aprovado com as revisões Medium descritas. `actionlint` 1.7.12 validou o YAML sem erros e `pip check` não encontrou dependências quebradas. O replay do SCA histórico foi bloqueado.
 
 Actions são fixadas por SHA completo, com `contents: read` e `persist-credentials: false`; não há `pull_request_target`, credenciais de produção ou execução de código PR com token privilegiado. ZAP é fixado em 2.17.0 e validado por SHA256 do asset oficial. Java 21 executa o scanner. O job tem timeout de 20 minutos e upload de evidências mesmo em falha, com retenção de sete dias. Agendamento semanal busca alterações no banco de avisos, sem prometer detecção de todo zero-day. Pins precisam de manutenção e revisão; o conjunto de wheels ainda não constitui um lock com hashes de todas as dependências.
 

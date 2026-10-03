@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 3 — Fundamentos de segurança e modelagem inicial
 
 **Aplicação:** API de agendamento de consultas de uma rede de clínicas.  
@@ -49,7 +51,7 @@ A classificação abaixo é qualitativa e contextual. “Impacto alto” descrev
 | C05 — Redução de consumo por resposta | limit/offset limitados; agenda com PAGE_SIZE=50; limites da observação e datas | test_paginacao_invalida; test_agenda_vazia_e_paginacao; casos extremos UTC | Não há teste de carga, quotas, rate limiting ou limite do crescimento do banco. |
 | C06 — Menor retenção em cache HTML | Cache-Control: no-store em GET /agenda | Verificação do cabeçalho em test_auditoria_persistida_mas_ausente_em_todas_respostas | Não é criptografia, não impede captura de tela e não está aplicado às respostas JSON. |
 | C07 — Configuração e isolamento | .venv, requirements.txt, BaseSettings, .env.example sem segredos e .gitignore | evidencias/exercicio_02/qualidade.json e inspeção dos arquivos | .venv isola dependências, não oferece sandbox do processo. Fixar versões não é scan de vulnerabilidades; .gitignore não protege arquivo já rastreado nem filtra ZIP. |
-| C08 — Verificação do desenvolvimento | pytest e revisão Astra nos exercícios 1 e 2 | 39 casos aprovados no registro do Exercício 2; revisões em docs | Testes parciais não são auditoria completa, scan ZAP, SAST especializado ou prova de ausência de falhas. |
+| C08 — Verificação do desenvolvimento | pytest e testes de regressão nos exercícios 1 e 2 | 39 casos aprovados no registro do Exercício 2 e respectivos resultados de teste | Testes parciais não são auditoria completa, scan ZAP, SAST especializado ou prova de ausência de falhas. |
 
 ## 5. Mapeamento dos frameworks
 
@@ -64,7 +66,7 @@ Versões adotadas: OWASP Top 10 **2025**, OWASP API Security Top 10 **2023** e N
 | OWASP API4:2023 — Unrestricted Resource Consumption | C05 limita dados por resposta, porém não limita volume de requisições. | Redução parcial de consumo; disponibilidade ainda requer controles adicionais. [Fonte](https://owasp.org/API-Security/editions/2023/en/0xa4-unrestricted-resource-consumption/) |
 | OWASP A01:2025 — Broken Access Control | GET/POST/PUT/DELETE e /agenda não verificam usuário ou permissão. | Lacuna prioritária, não um controle implementado. [Fonte](https://top10.owasp.org/2025/A01_2025-Broken_Access_Control/) |
 | NIST SSDF PW.5.1 — práticas de codificação segura | C01–C04: validação, contrato explícito, SQL parametrizado e escape. | Evidência de adoção parcial no código atual. |
-| NIST SSDF PW.7.2 — revisão/análise do código e registro dos problemas | C08: revisões Astra documentadas; correções de offset e UTC no Exercício 1. | Análise assistida por IA; não equivale a revisão humana independente ou a SAST completo. |
+| NIST SSDF PW.7.2 — revisão/análise do código e registro dos problemas | C08: correções de offset e UTC no Exercício 1, com testes de regressão e problemas registrados. | A associação ao SSDF descreve evidências do projeto; não equivale a certificação ou revisão humana independente. |
 | NIST SSDF PW.8.2 — testes e documentação dos resultados | C08: testes de endpoints e payloads, com logs e regressões. | Cobertura observável, ainda sem autenticação, testes de carga ou pipeline de segurança. |
 | NIST SSDF PW.1.1 — modelagem de riscos | Este inventário, avaliação CIA e DFD. | Base inicial para o threat model posterior, não um STRIDE completo. |
 | MITRE CWE-200 — exposição de informação sensível | C01 restringe metadados internos e C06 reduz cache HTML. | Acesso sem autorização aos dados públicos continua possível. [Fonte](https://cwe.mitre.org/data/definitions/200.html) |
@@ -158,7 +160,7 @@ A avaliação foi baseada nos arquivos app/models/consulta.py, app/routes/consul
 
 Os 39 testes e os registros HTTP/DOM do Exercício 2 são evidências preexistentes reaproveitadas, não uma nova execução da suíte neste exercício documental. Uma sondagem isolada em memória foi usada para registrar os contratos, as rotas sem autenticação e os controles de saída, sem dados reais e sem modificar o banco local.
 
-A revisão Astra deste artefato está registrada em docs/revisao_astra_exercicio_03.md. O DFD é um diagrama técnico gerado a partir da análise, não um print da aplicação; as pendências de captura dos exercícios anteriores continuam separadas.
+O DFD é um diagrama técnico gerado a partir da análise, não um print da aplicação; as pendências de captura dos exercícios anteriores continuam separadas.
 
 | Exigência | Onde é atendida |
 |---|---|
@@ -169,10 +171,3 @@ A revisão Astra deste artefato está registrada em docs/revisao_astra_exercicio
 | Fluxos sensíveis de pacientes | Tabela F01–F12 e caminhos descritos |
 | Base para próximas análises | Identificadores estáveis e prioridades da seção 7 |
 
-## 9. Vídeo — trecho de aproximadamente 25 segundos
-
-Mostrar o DFD e apontar o caminho cliente → API → banco → agenda.
-
-“Na análise CIA, identifiquei que limitar campos e escapar HTML ajuda, mas ainda não substitui autenticação e autorização. O DFD registra onde os dados de pacientes entram, são armazenados e voltam ao navegador. Também separa o laboratório, que futuramente deverá receber somente horários disponíveis. Relacionei esses controles e lacunas a OWASP, NIST SSDF e MITRE CWE.”
-
-Este trecho é de apoio; manter o vídeo completo em até cinco minutos e reservar tempo para os exercícios 12 e 13.

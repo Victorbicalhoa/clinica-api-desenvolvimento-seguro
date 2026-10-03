@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 4 — Threat model da API de agendamento
 
 **Referência:** TM-CLINICA · versão 1.0 · 22/09/2026.  
@@ -441,14 +443,6 @@ Não foram produzidos scans ZAP/SAST, resultados de carga ou execução de pipel
 | Ativos e superfícies | A01–A05 e AS01–AS07, ligados a cada ameaça |
 | Mitigações | MT-01–MT-12, com estado e responsabilidade proposta |
 | Referência para capstone | IDs estáveis, JSON, critérios VT e política de manutenção |
-| Revisão Astra | docs/revisao_astra_exercicio_04.md |
 
 A validação em evidencias/exercicio_04 verifica integridade das referências e hashes da baseline, não a segurança do sistema. A suíte anterior de 39 casos não foi apresentada como nova execução. Não houve alteração de código da aplicação. ZIP somente ao final.
 
-## 11. Vídeo — aproximadamente 30 segundos
-
-Mostrar matriz STRIDE e MC-01 → TH-02 → MT-02 → VT-02.
-
-“Usei STRIDE para analisar o CRUD, a agenda e a persistência. Cada ameaça tem um cenário de abuso, os ativos afetados e uma mitigação verificável. Por exemplo, acessar uma consulta alheia exige autorização por recurso, que deverá ser testada com dois usuários distintos. Esse registro será a referência das correções e dos testes do capstone.”
-
-Escolher este trecho ou o resumo CIA/DFD para evitar repetição, preservando o limite de cinco minutos e espaço para os exercícios 12 e 13.

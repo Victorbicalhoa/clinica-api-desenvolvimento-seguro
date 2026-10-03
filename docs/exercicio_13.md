@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 13 — Capstone: auditoria e rastreabilidade
 
 **Aluno:** Hebert Almeida · **Data:** 25/09/2026 · **Aplicação:** API de agendamento de clínicas, FastAPI/SQLModel/SQLite.
@@ -131,11 +133,11 @@ python -m scripts.security_gate --reports reports
 | **Cadeia de fornecimento** | Zero advisories é retrato temporal. Fixação de versões e SRI reduzem riscos, mas não garantem origem íntegra para sempre. Incluir assets npm na monitoração contínua; hashes completos e política de atualização antes de produção |
 | **CI e IAST** | Não houve execução remota, branch protection/ruleset obrigatório ou IAST instrumentado. Configurar e comprovar o job requerido antes de depender do gate para impedir merge. IAST é etapa planejada/justificada no Ex12, não evidência realizada |
 
-**Decisão final: NO-GO para produção.** O gate passou no escopo automatizado, mas não verifica sozinho requisitos de produto e controles operacionais. Os bloqueadores acima não são aceitos para dados de saúde reais. A demonstração local com dados fictícios pode prosseguir. A revisão estática Astra não encontrou novo bloqueador de código para esse escopo e preservou essas ressalvas; o parecer está em `docs/revisao_astra_exercicio_13.md`.
+**Decisão final: NO-GO para produção.** O gate passou no escopo automatizado, mas não verifica sozinho requisitos de produto e controles operacionais. Os bloqueadores acima não são aceitos para dados de saúde reais. A demonstração local com dados fictícios pode prosseguir.
 
 ## 8. Entrega e vídeo
 
-O roteiro consolidado está em `docs/roteiro_video_final.md`, com 4min50s e prioridade para autorização, gate do Exercício 12 e decisões deste capstone. A gravação deve ser feita pelo aluno, com suas próprias palavras, demonstração funcionando e sem segredos visíveis. Link do YouTube não listado ainda não fornecido. Prints reais, conclusão do Exercício 7 e vídeo são pendências da entrega global. O ZIP `Hebert_almeida_DR2_AT.ZIP` permanece para o final, conforme solicitado.
+O roteiro consolidado está em `docs/Roteiro_Final_Executavel_2026-10-03.md`, com 4min50s e prioridade para autorização, gate do Exercício 12 e decisões deste capstone. A gravação deve ser feita pelo aluno, com suas próprias palavras, demonstração funcionando e sem segredos visíveis. Link do YouTube não listado ainda não fornecido. Na etapa histórica deste relatório, prints, Exercício 7 e vídeo estavam pendentes. As capturas e a integração M2M foram concluídas posteriormente, conforme o índice atual; o vídeo pessoal permanece separado. O ZIP `Hebert_almeida_DR2_AT.ZIP` permanece para o final, conforme solicitado.
 
 ## Referências técnicas
 
