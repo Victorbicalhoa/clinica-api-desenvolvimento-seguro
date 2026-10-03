@@ -37,7 +37,7 @@ O provisionamento solicita uma senha exclusiva sem eco. Abra `http://127.0.0.1:8
 
 Java 21 e rede são necessários para o scan. O ZAP observa respostas de uma aplicação descartável em loopback, com dados fictícios. Não é scan ativo e não comprova TLS/infraestrutura. Os resultados atuais são apresentados nas evidências; a rodada local de 02/10/2026 aprovou 226 testes e 74 verificações OpenAPI.
 
-O gate reprova falhas obrigatórias, evidências ausentes, severidades bloqueantes e vulnerabilidades de dependências. A demonstração remota de branch protection será documentada após sua execução; um YAML sozinho não comprova impedimento de merge.
+O gate reprova falhas obrigatórias, evidências ausentes, severidades bloqueantes e vulnerabilidades de dependências. A prova remota documentada em 03/10/2026 confirmou o check obrigatório e o merge bloqueado na reprovação, seguido da liberação após a correção. Consulte o relatório R21 abaixo.
 
 ## Documentação
 
