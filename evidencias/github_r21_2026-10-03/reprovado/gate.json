@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "blocked": [
+    "pytest: controle obrigatorio falhou",
+    "pytest: vazio, falha, erro ou teste ignorado"
+  ],
+  "warnings": [
+    "Bandit B105: LOW",
+    "Bandit B105: LOW",
+    "ZAP 10109: Informational",
+    "ZAP 10031: Informational"
+  ]
+}

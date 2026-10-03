@@ -1,0 +1,242 @@
+- link "Skip to content":
+  - /url: "#start-of-content"
+- banner "Global navigation menu":
+  - button "Open menu":
+  - link "Homepage (g then d)":
+    - /url: /
+  - navigation "Breadcrumbs":
+    - list:
+      - button "1 more breadcrumb items":
+      - link "clinica-api-desenvolvimento-seguro":
+        - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro
+      - button "Switch repository (alt shift r)":
+  - button "Open quick search dialog, type / to search (forward slash)":
+  - link "You have unread notifications (g then n)":
+    - /url: /notifications
+  - button "Open user navigation menu":
+    - img "Victor Bicalho"
+  - heading "Repository navigation" [level=2]
+  - navigation "Repository":
+    - list:
+      - link "Code":
+        - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro
+        - generic: Code
+      - link "Issues":
+        - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/issues
+        - generic: Issues
+      - link "Pull requests (1)":
+        - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/pulls
+        - generic: Pull requests
+        - generic: "1"
+        - generic: (1)
+      - link "Agents":
+        - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/agents?author=Victorbicalhoa
+        - generic: Agents
+    - button "More items":
+      - text: More
+      - generic: items
+- main:
+  - 'heading "test: comprovar security gate e bloqueio de merge - #1" [level=1]':
+    - text: "test: comprovar security gate e bloqueio de merge"
+    - generic: "- #1"
+  - generic: "#1"
+  - button "Edit title":
+  - button "View status":
+    - generic: View status
+  - button "Code":
+    - generic: Code
+  - img "Pull request"
+  - text: Open
+  - link "Victorbicalhoa":
+    - /url: /Victorbicalhoa
+  - text: wants to merge 1 commit into
+  - link "main":
+    - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/tree/main
+  - generic: from
+  - link "evidencia/security-gate":
+    - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/tree/evidencia/security-gate
+  - button "Copy head branch name to clipboard":
+  - navigation "Pull request navigation":
+    - link "Conversation (0)":
+      - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/pull/1
+      - text: Conversation
+      - generic: "0"
+      - generic: (0)
+    - link "Commits (1)":
+      - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/pull/1/commits
+      - text: Commits
+      - generic: "1"
+      - generic: (1)
+    - link "Checks (1)":
+      - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/pull/1/checks
+      - text: Checks
+      - generic: "1"
+      - generic: (1)
+    - link "Files changed (1)":
+      - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/pull/1/changes
+      - text: Files changed
+      - generic: "1"
+      - generic: (1)
+  - img "Pull request"
+  - text: Open
+  - 'heading "test: comprovar security gate e bloqueio de merge #1 Victorbicalhoa wants to merge 1 commit into main from evidencia/security-gate Copy head branch name to clipboard" [level=2]':
+    - 'link "test: comprovar security gate e bloqueio de merge"':
+      - /url: "#top"
+      - generic: "test: comprovar security gate e bloqueio de merge"
+    - generic: "#1"
+    - link "Victorbicalhoa":
+      - /url: /Victorbicalhoa
+    - text: wants to merge 1 commit into
+    - link "main":
+      - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/tree/main
+    - generic: from
+    - link "evidencia/security-gate":
+      - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/tree/evidencia/security-gate
+    - button "Copy head branch name to clipboard":
+  - heading "Conversation" [level=2]
+  - heading "@Victorbicalhoa Victorbicalhoa commented Oct 3, 20267 hours ago" [level=3]:
+    - img "@Victorbicalhoa"
+    - strong:
+      - link "Victorbicalhoa":
+        - /url: /Victorbicalhoa
+    - text: commented
+    - link "Oct 3, 20267 hours ago":
+      - /url: "#issue-5686431270"
+  - button "Show options":
+    - img "Show options"
+  - paragraph: Prova controlada da rubrica R21. O primeiro commit adiciona um teste sentinela propositalmente reprovado, sem alterar a segurança da aplicação. A proteção de main deve impedir o merge enquanto o check security-gate falhar.
+  - paragraph: Após registrar a reprovação, o sentinela será removido e o pipeline executado novamente. Os resultados, configurações e capturas serão documentados. O commit reprovado não deve ser integrado à main.
+  - generic "Add or remove reactions":
+  - link "@Victorbicalhoa":
+    - /url: /Victorbicalhoa
+    - img "@Victorbicalhoa"
+  - code:
+    - 'link "test: demonstrar bloqueio por controle obrigatório reprovado"':
+      - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/pull/1/commits/7ea46644201376cc5a1b5fe25edb7d9667b7ef47
+  - generic "0 / 1 checks OK":
+    - img "0 / 1 checks OK"
+  - code:
+    - link "7ea4664":
+      - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/pull/1/commits/7ea46644201376cc5a1b5fe25edb7d9667b7ef47
+  - heading "Merge info" [level=2]
+  - region "Checks":
+    - heading "All checks have failed" [level=3]
+    - paragraph: 1 failing check
+    - button "Expand checks" [active]
+    - group "failing checks":
+      - heading "failing checks" [level=3]
+      - list "failing checks":
+        - listitem "DevSecOps / security-gate (pull_request) failing after 2m":
+          - img "DevSecOps / security-gate (pull_request)"
+          - heading "DevSecOps / security-gate (pull_request)" [level=4]:
+            - link "DevSecOps / security-gate (pull_request)":
+              - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/actions/runs/37095705289/job/111125070516?pr=1
+          - generic: Failing after 2m
+          - generic: Required
+          - button "More actions":
+  - button "Merge pull request" [disabled]:
+    - generic: Merge pull request
+  - button "Select merge method":
+  - text: You can also merge this with the command line.
+  - button "View command line instructions."
+  - generic: Still in progress?
+  - button "Convert to draft":
+    - generic: Convert to draft
+  - form "Add a comment":
+    - heading "Add a comment" [level=4]
+    - generic: Comment
+    - tablist "Add a comment":
+      - tab "Write" [selected]
+      - tab "Preview"
+    - toolbar:
+      - button "Heading":
+      - button "Bold":
+      - button "Italic":
+      - button "Quote":
+      - button "Code":
+      - button "Link":
+      - button "Menu":
+    - tabpanel "Write":
+      - textbox "Comment":
+        - /placeholder: " "
+      - paragraph: Add your comment here...
+      - link "Markdown":
+        - /url: https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
+        - generic: Markdown
+      - button "Add files":
+        - generic: Add files
+    - button "Close pull request":
+      - text: Close pull request
+    - button "Comment" [disabled]
+  - text: Remember, contributions to this repository should follow our
+  - link "GitHub Community Guidelines":
+    - /url: https://docs.github.com/articles/github-community-guidelines
+  - text: .
+  - strong: ProTip!
+  - text: Add
+  - link ".patch":
+    - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/pull/1.patch
+  - text: or
+  - link ".diff":
+    - /url: /Victorbicalhoa/clinica-api-desenvolvimento-seguro/pull/1.diff
+  - text: to the end of URLs for Git’s plaintext views.
+  - form "Select reviewers":
+    - button "Reviewers":
+      - text: Reviewers
+    - generic: No reviews
+    - generic: Still in progress?
+    - button "Convert to draft"
+  - form "Select assignees":
+    - button "Assignees":
+      - text: Assignees
+    - text: No one—
+    - button "assign yourself"
+  - button "Labels":
+    - text: Labels
+  - generic: None yet
+  - form "Select projects":
+    - button "Projects":
+      - text: Projects
+    - text: None yet
+  - form "Select milestones":
+    - button "Milestone":
+      - text: Milestone
+    - text: No milestone
+  - form "Link issues":
+    - button "Development":
+      - text: Development
+    - paragraph: Successfully merging this pull request may close these issues.
+    - paragraph: None yet
+  - generic: Loading
+  - heading "1 participant" [level=3]
+  - link "@Victorbicalhoa":
+    - /url: /Victorbicalhoa
+    - img "@Victorbicalhoa"
+  - button "Lock conversation":
+    - strong: Lock conversation
+  - button "Archive pull request":
+    - strong: Archive pull request
+- contentinfo:
+  - heading "Footer" [level=2]
+  - link "GitHub Homepage":
+    - /url: https://github.com
+  - generic: © 2026 GitHub, Inc.
+  - navigation "Footer":
+    - heading "Footer navigation" [level=3]
+    - list "Footer navigation":
+      - link "Terms":
+        - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+      - link "Privacy":
+        - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+      - link "Security":
+        - /url: https://github.com/security
+      - link "Status":
+        - /url: https://www.githubstatus.com/
+      - link "Community":
+        - /url: https://github.community/
+      - link "Docs":
+        - /url: https://docs.github.com/
+      - link "Contact":
+        - /url: https://support.github.com?tags=dotcom-footer
+      - button "Manage cookies"
+      - button "Do not share my personal information"

@@ -37,7 +37,7 @@ O provisionamento solicita uma senha exclusiva sem eco. Abra `http://127.0.0.1:8
 
 Java 21 e rede são necessários para o scan. O ZAP observa respostas de uma aplicação descartável em loopback, com dados fictícios. Não é scan ativo e não comprova TLS/infraestrutura. Os resultados atuais são apresentados nas evidências; a rodada local de 02/10/2026 aprovou 226 testes e 74 verificações OpenAPI.
 
-O gate reprova falhas obrigatórias, evidências ausentes, severidades bloqueantes e vulnerabilidades de dependências. A demonstração remota de branch protection será documentada após sua execução; um YAML sozinho não comprova impedimento de merge.
+O gate reprova falhas obrigatórias, evidências ausentes, severidades bloqueantes e vulnerabilidades de dependências. A prova remota documentada em 03/10/2026 confirmou o check obrigatório e o merge bloqueado na reprovação, seguido da liberação após a correção. Consulte o relatório R21 abaixo.
 
 ## Documentação
 
@@ -49,3 +49,7 @@ O gate reprova falhas obrigatórias, evidências ausentes, severidades bloqueant
 - [Rastreabilidade atualizada](docs/Exercicio_13_Rastreabilidade_2026-10-02.json)
 
 Os documentos de cada exercício preservam o estado histórico daquela etapa; a atualização de conformidade informa as correções posteriores. Produção permanece **NO-GO** até validar MFA real, TLS/proxy, proteção do banco, backups/restauração e operação. Os assets Swagger vendorizados mantêm seus arquivos LICENSE/NOTICE.
+
+## Evidências e roteiro atualizados em 03/10/2026
+
+Consulte o [roteiro executável do vídeo](docs/Roteiro_Final_Executavel_2026-10-03.md), a [prova do gate e proteção de merge](docs/Prova_GitHub_R21_2026-10-03.md) e a [matriz atual](docs/Matriz_Rubricas_AT_2026-10-03.csv). A prova inclui falha controlada, merge bloqueado e aprovação após correção. Relatórios anteriores permanecem como histórico. A matriz registra evidências acadêmicas; não representa autorização de produção nem substitui o vídeo pessoal.
