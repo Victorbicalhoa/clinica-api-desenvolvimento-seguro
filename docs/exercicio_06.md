@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 6 — Autenticação e autorização
 
 **Autor:** Hebert Almeida · **Data:** 22/09/2026
@@ -99,7 +101,7 @@ TH-04 (integridade clínica/conflitos), TH-05 (auditoria de negócio), TH-09 (li
 
 Resultados reais de 22/09/2026: **70 testes aprovados em 93,62 s**, mais **1 teste concorrente aprovado em 3,39 s** em execução separada. Cada execução apresenta dois avisos de depreciação das dependências Starlette/httpx e AnyIO, sem falhas. Ruff, verificação de formatação dos 27 arquivos Python e pip check aprovados. A sondagem reproduzível validou **20 cenários HTTP**. Esses resultados estão em `evidencias/exercicio_06`, com requisições sanitizadas e hashes dos arquivos alterados.
 
-A revisão Astra identificou e confirmou a correção de dois problemas: uso da configuração injetada de banco pela fábrica da aplicação e tratamento de duplicidade durante o flush do provisionamento. Os dois receberam testes de regressão. Parecer final: aprovado no escopo definido, sem pendências da revisão. Ver `docs/revisao_astra_exercicio_06.md`.
+Dois problemas foram corrigidos e receberam verificação: uso da configuração injetada de banco pela fábrica da aplicação e tratamento de duplicidade durante o flush do provisionamento. Os dois receberam testes de regressão. Os testes de regressão documentam o comportamento esperado.
 
 Para executar a suíte e a sondagem:
 

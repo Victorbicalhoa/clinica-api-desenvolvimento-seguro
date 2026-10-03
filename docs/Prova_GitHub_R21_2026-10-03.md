@@ -2,7 +2,7 @@
 
 ## Resultado
 
-R21 atendida com revisão Astra. A matriz passa a 24/24 rubricas com evidências; isso não substitui a avaliação do professor nem conclui os requisitos pessoais de vídeo e envio.
+R21 possui evidência de bloqueio efetivo de merge. A matriz relaciona 24 rubricas à implementação e às evidências; isso não substitui a avaliação do professor nem conclui os requisitos pessoais de vídeo e envio.
 
 | Prova | Referência | Resultado |
 |---|---|---|

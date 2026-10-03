@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 2 — Controle de exposição de dados e templates seguros
 
 ## Resultado
@@ -82,10 +84,10 @@ A captura PNG do navegador falhou por timeout, como na etapa anterior. O print p
 
 Permanecem dois avisos de depreciação de dependências no pytest; estão preservados no log. Não houve falhas.
 
-## Revisão Astra
-O gpt-6-astra revisou os modelos, rotas, configuração Jinja2, templates e testes em modo somente leitura. Executou a suíte atual e confirmou 39 testes aprovados. Parecer: sem achados bloqueadores de confidencialidade ou XSS no escopo do exercício.
+## Validação e limite de migração
+A suíte desta etapa registrou 39 testes aprovados para os cenários exercitados. Isso não comprova ausência de todas as vulnerabilidades.
 
-A observação operacional do revisor sobre bancos antigos foi tratada na documentação: create_all cria tabelas, mas não altera tabelas existentes.
+`create_all` cria tabelas, mas não altera tabelas existentes; a preparação de bancos antigos exige migração explícita.
 
 ## Banco e compatibilidade
 O esquema agora tem três colunas adicionais: observacao, criado_em e referencia_interna. No início deste exercício não existia data/clinica.db. A demonstração usou .cache/exercicio02_demo.db, preservando o banco de demonstração anterior.
@@ -108,17 +110,6 @@ Use esse nome apenas se ainda não contiver um esquema antigo. A variável vale 
 A página é destinada à recepção, mas autenticação e restrição por papel ainda não foram implementadas. Não é uma página “interna protegida” apenas por estar em /agenda. Usar localmente e somente com dados fictícios até os exercícios de acesso.
 
 Os riscos já documentados na fundação (ownership, existência de pacientes/profissionais e conflitos de agenda) continuam fora do escopo desta etapa. Não foi afirmada conformidade integral com LGPD.
-
-## Vídeo — trecho selecionado de aproximadamente 40 segundos
-1. Mostrar Consulta com criado_em e referencia_interna e, ao lado, ConsultaRead sem esses campos (10 s).
-2. Mostrar a resposta do GET sem auditoria (8 s).
-3. Mostrar a observação com payload na agenda e a configuração autoescape, além de extends "base.html" (15 s).
-4. Mostrar o resultado dos testes (7 s).
-
-Fala sugerida:
-“Separei o modelo do banco do contrato público da API. Assim, os campos internos de auditoria ficam persistidos, mas não aparecem no JSON nem chegam ao template. A agenda usa herança do Jinja2 e escape automático. Aqui, um script malicioso foi salvo como observação; ao abrir a página, ele aparece como texto e não é executado. Os testes verificam tanto a omissão dos campos quanto essa renderização.”
-
-Adaptar a fala às próprias palavras. Este exercício é uma boa demonstração visual para o vídeo final; manter espaço para os exercícios 12 e 13.
 
 ## Fontes técnicas
 - [FastAPI — response_model e filtragem de saída](https://fastapi.tiangolo.com/tutorial/response-model/)

@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 7 — Escopos e integração externa
 
 Revisão de conformidade: 02/10/2026. Implementação vinculada à ameaça TH-14 do Exercício 4. O laboratório consulta ofertas de horários; não recebe dados de pacientes ou permissões clínicas.
@@ -59,4 +61,4 @@ O middleware aplica limites por origem e uma quota de cinco tentativas por minut
 
 `tests/test_exercicio07.py` cobre emissão, claims, mínimo de dados, escopos, credenciais inválidas, duplicatas, expiração, audience, papéis, revogação, vínculo, cliente/profissional inativo e limites. `evidencias/conformidade_2026-10-02/m2m-evidence.json` registra respostas sanitizadas; o corpus ZAP inclui sucesso M2M e as duas negações cruzadas humano/máquina. A OpenAPI declara o fluxo clientCredentials e o scope da operação.
 
-Astra revisou o código e as correções de quota/threadpool. Permanecem responsabilidades de produção: TLS/proxy confiável, custódia/rotação de segredos, monitoramento e disponibilidade do banco. O compartilhamento da chave simétrica dentro deste único emissor exige proteção operacional; um comprometimento do emissor extrapola a restrição de um token isolado. Não se declara prontidão para produção.
+As correções de quota e threadpool estão implementadas e cobertas por testes. Permanecem responsabilidades de produção: TLS/proxy confiável, custódia/rotação de segredos, monitoramento e disponibilidade do banco. O compartilhamento da chave simétrica dentro deste único emissor exige proteção operacional; um comprometimento do emissor extrapola a restrição de um token isolado. Não se declara prontidão para produção.

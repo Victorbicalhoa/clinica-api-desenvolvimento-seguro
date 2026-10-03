@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 10 — Hardening de rede e proteção contra abuso
 
 **Assessment: Desenvolvimento Seguro de Aplicações Web — Hebert Almeida**  
@@ -43,7 +45,7 @@ O mecanismo centralizado do Exercício 9 foi ampliado, sem duplicar contadores n
 
 O primeiro orçamento esgotado retorna 429 com Retry-After. A quota de login por endereço é aplicada antes da validação do formulário e do bcrypt; assim, trocar username não permite tentativas ilimitadas a partir do mesmo endereço. A quota por conta permanece independente do IP. A quota geral ocorre após autenticação e antes do endpoint, contando também operações autenticadas que posteriormente retornem 403/422. Trocar de token não reinicia essa quota.
 
-**POST /auth/logout fica isento da quota geral**, mantendo autenticação, revogação e auditoria. Ajuste solicitado pelo Astra para permitir encerramento de sessão mesmo após esgotamento do orçamento. Token revogado passa a retornar 401.
+**POST /auth/logout fica isento da quota geral**, mantendo autenticação, revogação e auditoria. A exceção permite encerramento de sessão mesmo após esgotamento do orçamento. Token revogado passa a retornar 401.
 
 Saúde, documentação, arquivos estáticos e preflight não usam a quota autenticada. Requisições sem identidade válida às rotas protegidas continuam retornando 401; não recebem o orçamento por usuário. Requisições bloqueadas pelos limites de autenticação/API entram na auditoria existente com alerta e respostas sensíveis mantêm no-store. Não há promessa de auditoria para preflights tratados externamente à aplicação.
 
@@ -81,14 +83,14 @@ O script de evidências cria banco em memória, gera uma credencial efêmera e s
 
 `tests/test_exercicio10.py` cobre allowlist, preflight, configuração inválida, headers HTTP/HTTPS e erros, spoofing de headers encaminhados, login por endereço, isolamento entre quotas, logout após bloqueio, renovação de token e reinício da janela. A suíte completa também verifica ownership, bcrypt/JWT/MFA, validação, XSS, auditoria, concorrência e conflitos de agenda das etapas anteriores.
 
-Resultados finais e quantidades estão registrados em `checks.json` e no log integral `pytest.txt`; Ruff e formatação têm logs separados. Os dois avisos de depreciação do TestClient/httpx e BlockingPortal são de dependências existentes, sem falha de teste. `alteracoes_sha256.json` identifica arquivos modificados; `http.json` registra hashes do código usado nas sondagens. Revisão independente: `docs/revisao_astra_exercicio_10.md`.
+Resultados finais e quantidades estão registrados em `checks.json` e no log integral `pytest.txt`; Ruff e formatação têm logs separados. Os dois avisos de depreciação do TestClient/httpx e BlockingPortal são de dependências existentes, sem falha de teste. `alteracoes_sha256.json` identifica arquivos modificados; `http.json` registra hashes do código usado nas sondagens.
 
 | Requisito | Implementação | Evidência |
 |---|---|---|
 | CORS explícito | Settings + CORSMiddleware | Preflight 200/400 e ausência de ACAO para origem negada |
 | HSTS, XFO, XCTO | SecurityHeaders externo | Headers em respostas normais, preflight e erros |
 | Login mais restritivo | Orçamentos de conta/IP menores que quota de API | Cinco falhas 401, sexta 429, consulta autenticada 200 |
-| Centralização e regressão | auth/limits, auth/middleware, core/network | Suíte completa e revisão Astra |
+| Centralização e regressão | auth/limits, auth/middleware, core/network | Suíte completa e testes de regressão |
 
 Na modelagem anterior, o rate limiting contribui para TH-09/MT-09/VT-09 (abuso/disponibilidade). HSTS contribui parcialmente para TH-12/MT-11/VT-12 (transporte), sem encerrar o risco enquanto TLS real não for implantado. O exercício concretiza controles na fronteira externa descrita no Exercício 5. Autorização de recursos permanece vigente; integração M2M do Exercício 7 continua pendente.
 

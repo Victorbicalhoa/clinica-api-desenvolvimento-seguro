@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 5 — Arquitetura de segurança e vetores de ataque
 
 **Autor:** Hebert Almeida · **Data:** 22/09/2026 · **Versão:** ARQ-CLINICA 1.0  
@@ -146,7 +148,7 @@ Pontos de atenção complementares para fases futuras: gestão/rotação de segr
 | Identificar vetores nos três eixos | VD01–VD04, VI01–VI04, VF01–VF04, com pré-condições, situação e mitigação |
 | Orientar próximas etapas | Decisões para auth/exposição e referências TH/MT/VT do Exercício 4 |
 
-Fontes locais: app/main.py, routes/consultas.py, routes/agenda.py, models/consulta.py, database/session.py, core/config.py, core/templates.py, auth/__init__.py, templates e testes existentes. O validador em `evidencias/exercicio_05/validar_arquitetura.py` verifica IDs e a preservação da baseline de 24 arquivos do Exercício 3; o resultado fica em `validacao_arquitetura.json`. Isso é verificação documental, não pentest ou teste de controles futuros. Os 39 testes aprovados são o resultado histórico do Exercício 2; não são apresentados como nova execução. Revisão independente registrada em `docs/revisao_astra_exercicio_05.md`.
+Fontes locais: app/main.py, routes/consultas.py, routes/agenda.py, models/consulta.py, database/session.py, core/config.py, core/templates.py, auth/__init__.py, templates e testes existentes. O validador em `evidencias/exercicio_05/validar_arquitetura.py` verifica IDs e a preservação da baseline de 24 arquivos do Exercício 3; o resultado fica em `validacao_arquitetura.json`. Isso é verificação documental, não pentest ou teste de controles futuros. Os 39 testes aprovados são o resultado histórico do Exercício 2; não são apresentados como nova execução.
 
 Não foram gerados scans ZAP, pipeline ou prints de funcionalidades novas, pois não houve implementação nesta etapa. O ZIP permanece reservado para o final do Assessment.
 

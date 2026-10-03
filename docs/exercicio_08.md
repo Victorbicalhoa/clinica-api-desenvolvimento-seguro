@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 8 — Identificação manual de vulnerabilidades OWASP Top 10
 
 **Autor:** Hebert Almeida · **Data:** 24/09/2026 · **Versão:** REV-OWASP-1.0
@@ -127,7 +129,7 @@ Essas conclusões são limitadas ao código revisado. Não demonstram ausência 
 
 **Limite de aderência do cenário:** se a avaliação exigir uma BOLA aberta na versão entregue, essa condição não é atendida, pois a proteção já foi implementada no Exercício 6. A entrega demonstra a capacidade de identificar o padrão e distinguir o caso vulnerável da versão protegida, preservando o código seguro. Não se deve afirmar um achado inexistente nem regredir a aplicação para simular descoberta.
 
-Resultados anteriores de pytest permanecem históricos. Não houve nova execução da suíte, scan ZAP, exploração de BOLA, brute force ou correção funcional nesta etapa. Revisão independente: `docs/revisao_astra_exercicio_08.md`. O ZIP continua reservado para o final.
+Resultados anteriores de pytest permanecem históricos. Não houve nova execução da suíte, scan ZAP, exploração de BOLA, brute force ou correção funcional nesta etapa. O ZIP continua reservado para o final.
 
 ## 8. Roteiro opcional de vídeo — 25 segundos
 

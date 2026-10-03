@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 11 — Persistência segura
 
 **Hebert Almeida — Desenvolvimento Seguro de Aplicações Web**  
@@ -45,7 +47,7 @@ O teste injeta o payload fictício `x'); DROP TABLE consulta; --` em observaçã
 
 ## Evidências e reprodução
 
-Validação final: **127 testes aprovados**, incluindo os 13 novos; Ruff aprovado e 38 arquivos com formatação aprovada. A suíte completa foi executada novamente depois da correção solicitada pelo Astra.
+Validação final: **127 testes aprovados**, incluindo os 13 novos; Ruff aprovado e 38 arquivos com formatação aprovada. A suíte completa foi executada novamente depois da correção de isolamento do ambiente de teste.
 
 Os 13 casos novos de `tests/test_exercicio11.py` verificam:
 
@@ -64,7 +66,7 @@ Na raiz do projeto:
 .\.venv\Scripts\python.exe -m ruff format --check --no-cache app tests
 ```
 
-Os testes usam dados fictícios e diretórios exclusivos; o teste de disco remove somente seus arquivos conhecidos depois de fechar os engines. Uma fixture isola variáveis de Settings e o caminho do engine é conferido antes de inserir dados, evitando herdar DATABASE_URL do ambiente. Isso foi verificado também com DATABASE_URL e JWT_SECRET fictícios exportados. O banco de demonstração não é alterado. Logs integrais, resultado final e hashes das alterações estão em `evidencias/exercicio_11`. A revisão independente está em `docs/revisao_astra_exercicio_11.md`. Dois avisos preexistentes do TestClient/httpx e BlockingPortal não representam falhas de teste.
+Os testes usam dados fictícios e diretórios exclusivos; o teste de disco remove somente seus arquivos conhecidos depois de fechar os engines. Uma fixture isola variáveis de Settings e o caminho do engine é conferido antes de inserir dados, evitando herdar DATABASE_URL do ambiente. Isso foi verificado também com DATABASE_URL e JWT_SECRET fictícios exportados. O banco de demonstração não é alterado. Logs integrais, resultado final e hashes das alterações estão em `evidencias/exercicio_11`. Dois avisos preexistentes do TestClient/httpx e BlockingPortal não representam falhas de teste.
 
 | Requisito | Entrega verificável |
 |---|---|

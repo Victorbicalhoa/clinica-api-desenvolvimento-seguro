@@ -1,3 +1,5 @@
+> Registro técnico da etapa indicada. Para resultados atuais e alterações posteriores, consulte o [índice de documentação](README.md).
+
 # Exercício 9 — Correção centralizada de entrada, saída e controles de segurança
 
 **Autor:** Hebert Almeida · **Início:** 24/09/2026 · **Validação final:** 25/09/2026
@@ -102,7 +104,7 @@ O script `evidencias/exercicio_09/reproduzir_comparacao.py` foi executado primei
 
 Os testes também verificam conflito concorrente com conexões SQLite distintas, cancelamento que libera horário, bloqueio de reabertura, rollback de mutação quando a auditoria falha, imutabilidade da trilha, rate limit entre desafios e janela de recuperação. Os resultados finais são registrados em pytest.txt, ruff.txt, format.txt e checks.json na pasta de evidências.
 
-**Resultado final em 25/09/2026:** 90 testes aprovados em 57,74 segundos; Ruff aprovado; 35 arquivos Python com formatação aprovada. Os dois avisos da suíte são depreciações conhecidas de Starlette/httpx e AnyIO. A revisão Astra é registrada em docs/revisao_astra_exercicio_09.md. A janela do limitador é fixada pelo relógio injetável somente nos testes/probe para evitar flutuação na virada de minuto; a aplicação normal usa o relógio real, e a expiração JWT não é desativada.
+**Resultado final em 25/09/2026:** 90 testes aprovados em 57,74 segundos; Ruff aprovado; 35 arquivos Python com formatação aprovada. Os dois avisos da suíte são depreciações conhecidas de Starlette/httpx e AnyIO. A janela do limitador é fixada pelo relógio injetável somente nos testes/probe para evitar flutuação na virada de minuto; a aplicação normal usa o relógio real, e a expiração JWT não é desativada.
 
 Para reproduzir a versão atual, na raiz do projeto:
 
