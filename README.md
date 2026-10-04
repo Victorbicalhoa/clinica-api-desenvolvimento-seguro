@@ -41,12 +41,11 @@ O gate reprova falhas obrigatórias, evidências ausentes, severidades bloqueant
 
 ## Documentação
 
-Comece pelo [índice técnico](docs/README.md), que reúne os relatórios dos 13 exercícios, arquitetura, threat model, rastreabilidade, rubricas e evidências.
+Comece pelo [índice técnico](docs/consolidado.md), que reúne os relatórios dos 13 exercícios, arquitetura, threat model, rastreabilidade e evidências.
 
-- [Matriz requisito → implementação → evidência](docs/Matriz_Rubricas_AT_2026-10-03.csv)
-- [Prova do security gate e bloqueio de merge](docs/Prova_GitHub_R21_2026-10-03.md)
-- [Capstone e riscos residuais](docs/exercicio_13.md)
-- [Roteiro executável do vídeo](docs/Roteiro_Final_Executavel_2026-10-03.md)
-- [Metodologia, assistência e limites](docs/metodologia.md)
+- [Prova do security gate e bloqueio de merge](docs/consolidado.md#prova-github)
+- [Capstone e riscos residuais](docs/consolidado.md#exercicio-13)
+- [Metodologia, assistência e limites](docs/consolidado.md#limites)
 
 Os relatórios por exercício registram as respectivas etapas; o índice indica os complementos e resultados atuais. Produção permanece **NO-GO** até validar os controles operacionais documentados. Os assets Swagger vendorizados mantêm seus arquivos LICENSE/NOTICE. Vídeo pessoal, link e pacote final são requisitos separados da documentação técnica.
+
